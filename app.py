@@ -9,7 +9,7 @@ environment — it is never sent to the browser.
 
 Run locally:
     pip install -r requirements.txt
-    export GROQ_API_KEY="your-key"
+    export GROQ_API_KEY="your-key"t
     python app.py
 """
 
@@ -20,7 +20,6 @@ import os
 from random import choices
 import time
 from collections import defaultdict, deque
-from tkinter.filedialog import test
 from typing import Any, Deque, Dict, List
 from dotenv import load_dotenv
 load_dotenv()
