@@ -243,9 +243,9 @@ def index():
     return send_from_directory(".", "index.html")
 
 
-@app.route("/resume.pdf")
+@app.route("/SHANKAR_resume.pdf")
 def resume():
-    return send_from_directory(".", "resume.pdf", mimetype="application/pdf")
+    return send_from_directory(".", "SHANKAR_resume.pdf", mimetype="application/pdf")
 
 
 @app.after_request
