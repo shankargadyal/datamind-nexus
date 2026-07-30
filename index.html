@@ -31,9 +31,7 @@
 
 <!-- Favicon -->
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="C:\Users\shankar gadyal\Downloads\datamind-nexus-portfolio\portfolio\images\profile.png">
-
-
+<link rel="apple-touch-icon" href="images/profile.jpg">
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +48,7 @@
   "email": "mailto:gadyalshankar@gmail.com",
   "telephone": "+91-7760463023",
   "url": "https://shankargadyal.dev/",
-  "image": "images/c:\Users\shankar gadyal\Downloads\profile.png",
+  "image": "images/profile.jpg",
   "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressRegion": "Karnataka", "addressCountry": "IN" },
   "sameAs": [
     "https://github.com/shankargadyal",
@@ -334,10 +332,38 @@ h2.section-heading{
    ============================================================ */
 .hero{ padding-top:150px; text-align:left; }
 .hero-grid{ display:grid; grid-template-columns:1fr auto; gap:48px; align-items:center; }
-@media (max-width:760px){
-  .hero{padding-top:118px;}
-  .hero-grid{ grid-template-columns:1fr; gap:32px; }
-  .hero-portrait{ order:-1; }
+@media (max-width:768px){
+  .hero{ padding-top:100px; text-align:center; }
+  .hero-grid{ grid-template-columns:1fr; gap:20px; justify-items:center; }
+  .hero-portrait{ order:-1; margin-bottom:4px; }
+  .hero-copy{ display:flex; flex-direction:column; align-items:center; }
+
+  .avatar-ring{ width:120px; height:120px; }
+  .avatar-ring::after{ inset:-8px; }
+
+  .eyebrow{ font-size:11.5px; padding:5px 12px; margin-bottom:16px; }
+
+  h1.headline{
+    font-size:clamp(1.7rem, 7vw, 2.3rem);
+    line-height:1.15;
+    letter-spacing:-0.02em;
+    overflow-wrap:break-word;
+    word-break:normal;
+  }
+
+  .subhead{ font-size:0.98rem; max-width:100%; margin-bottom:18px; }
+  .avail-row{ justify-content:center; margin-bottom:22px; }
+
+  .hero-actions{ justify-content:center; gap:10px; }
+  .hero-actions .btn{ font-size:13.5px; padding:10px 16px; flex:1 1 auto; justify-content:center; }
+}
+
+@media (max-width:480px){
+  .hero-actions{ flex-direction:column; width:100%; }
+  .hero-actions .btn{ width:100%; }
+
+  .stat-card{ padding:14px 10px; }
+  .stat-num{ font-size:1.35rem; }
 }
 .eyebrow{
   display:inline-flex; align-items:center; gap:8px;
@@ -393,7 +419,6 @@ h1.headline .roles{ color:var(--accent); }
   background:var(--surface-2); border:3px solid var(--bg);
   animation:ring-spin 6s linear infinite reverse;
 }
-@media (max-width:760px){ .avatar-ring{width:154px; height:154px;} }
 
 /* ============================================================
    9. STATISTICS (animated counters)
@@ -861,12 +886,26 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
 #nova-send:hover{background:var(--accent-2);}
 #nova-send:disabled{ opacity:.5; cursor:not-allowed; }
 
+@media (max-width:768px){
+  #nova-orb{
+    bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+    right: calc(16px + env(safe-area-inset-right, 0px));
+    width:52px; height:52px;
+    z-index:9999;
+  }
+}
+
 @media (max-width:560px){
   #nova-panel{
-    top:0; bottom:0; left:0; right:0; width:100%; max-width:100%;
-    height:100%; max-height:100%; border-radius:0; border:none;
+    top:0; left:0; right:0; bottom:0;
+    width:100%; max-width:100%;
+    height:100dvh; max-height:100dvh;
+    border-radius:0; border:none;
+    z-index:9998;
   }
-  #nova-orb{ bottom:18px; right:18px; width:52px; height:52px; }
+  .nova-input-row{
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  }
   .nova-turn{max-width:94%;}
 }
 
@@ -1033,7 +1072,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
     <article class="ach-card reveal"><div class="ach-icon" aria-hidden="true">💳</div><div class="ach-title">Credit Risk Modeling</div><div class="ach-sub">265,000+ Lending Club loans, 0.743 ROC-AUC</div></article>
     <article class="ach-card reveal"><div class="ach-icon" aria-hidden="true">📊</div><div class="ach-title">Explainable AI</div><div class="ach-sub">SHAP attribution and plain-English decisions</div></article>
     <article class="ach-card reveal"><div class="ach-icon" aria-hidden="true">⚡</div><div class="ach-title">RAG Applications</div><div class="ach-sub">Retrieval assistants inside two live products</div></article>
-    <article class="ach-card reveal"><div class="ach-icon" aria-hidden="true">🧠</div><div class="ach-title">LLM Engineering</div><div class="ach-sub">Groq LLaMA 3.3 70B, GROQ, guardrails &amp; eval</div></article>
+    <article class="ach-card reveal"><div class="ach-icon" aria-hidden="true">🧠</div><div class="ach-title">LLM Engineering</div><div class="ach-sub">Groq LLaMA 3.3 70B, Gemini, guardrails &amp; eval</div></article>
   </div>
 </section>
 
@@ -1125,11 +1164,11 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
     </div>
     <div class="project-row"><b>Problem —</b> loan applicants get rejected with no explanation of why.</div>
     <div class="project-row"><b>Solution —</b> a full decision pipeline — pre-eligibility rules → ML risk scoring → risk banding → plain-English explanation — trained on 265,000+ Lending Club loans (2007–2018).</div>
-    <div class="project-row"><b>Result —</b> XGBoost, 0.743 ROC-AUC, 81.2% test accuracy. Every rejection is answered live by a GROQ-powered assistant.</div>
+    <div class="project-row"><b>Result —</b> XGBoost, 0.743 ROC-AUC, 81.2% test accuracy. Every rejection is answered live by a Gemini-powered assistant.</div>
 
     <div class="gallery" data-gallery="creditiq" aria-label="CreditIQ screenshots"></div>
 
-    <div class="stack-row"><span>Python</span><span>XGBoost</span><span>Streamlit</span><span>GROQ API</span></div>
+    <div class="stack-row"><span>Python</span><span>XGBoost</span><span>Streamlit</span><span>Gemini AI</span></div>
     <div class="project-links">
       <button class="details-btn" data-project="creditiq">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -1173,7 +1212,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
     <div class="tl-item teal reveal">
       <div class="tl-date">2024 · deployed</div>
       <div class="tl-title">CustomerIQ &amp; CreditIQ <span class="tl-kind">Project</span></div>
-      <div class="tl-org">Independent · Random Forest, XGBoost, GROQ API</div>
+      <div class="tl-org">Independent · Random Forest, XGBoost, Gemini API</div>
       <div class="tl-desc">Churn, RFM segmentation and CLV in one dashboard; a full credit decision pipeline trained on 265,000+ loan records in the other.</div>
     </div>
 
@@ -1211,7 +1250,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
   <h2 class="section-heading">Skills</h2>
   <div class="skills-grid">
     <div class="skill-card reveal"><h3>Modeling</h3><ul><li>Python, Pandas, Scikit-Learn</li><li>XGBoost, Random Forest</li><li>ARIMA, LSTM (Time Series)</li><li>SHAP (Explainability)</li></ul></div>
-    <div class="skill-card reveal"><h3>AI / LLM Systems</h3><ul><li>GROQ API, Groq LLaMA 3.3</li><li>Retrieval-Augmented Generation</li><li>Guardrails &amp; Eval agents</li><li>Multi-agent pipelines</li></ul></div>
+    <div class="skill-card reveal"><h3>AI / LLM Systems</h3><ul><li>Gemini AI, Groq LLaMA 3.3</li><li>Retrieval-Augmented Generation</li><li>Guardrails &amp; Eval agents</li><li>Multi-agent pipelines</li></ul></div>
     <div class="skill-card reveal"><h3>Product &amp; Delivery</h3><ul><li>Flask, Streamlit</li><li>React, Chart.js</li><li>Google Cloud Run</li><li>Docker, CI test suites</li></ul></div>
     <div class="skill-card reveal"><h3>Education</h3><ul><li>MSc Data Science (2025–2027)</li><li>BSc Data Science (2021–2024)</li><li>Infosys Springboard — ML for Python</li><li>Infosys Springboard — NLP</li></ul></div>
   </div>
@@ -1385,7 +1424,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
    -------------------------------------------------------------------------- */
 const CONFIG = {
   githubUser: 'shankargadyal',
-  chatEndpoint: '/api/chat',   // Flask backend → GROQ. No keys in the browser.
+  chatEndpoint: '/api/chat',   // Flask backend → Gemini. No keys in the browser.
   chatTimeoutMs: 30000,
   historyTurns: 8
 };
@@ -1571,7 +1610,7 @@ function archCreditIQ() {
   s += SVG.line(86, 74, 86, 98);
 
   s += SVG.box(356, 214, 150, 52, 'Approved path', 'offer + terms', 'teal');
-  s += SVG.box(536, 214, 168, 52, 'GROQ explainer', 'why it was declined', 'teal');
+  s += SVG.box(536, 214, 168, 52, 'Gemini explainer', 'why it was declined', 'teal');
   s += SVG.elbow(620, y + h, 431, 212, { midX: 431 });   // approved branch
   s += SVG.elbow(620, y + h, 620, 212, {});              // declined branch
   s += SVG.box(16, 214, 300, 52, 'Analytics dashboard', 'default rate by grade · purpose · band');
@@ -1687,10 +1726,10 @@ const PROJECTS = {
     shots: [
       { src: 'images/creditiq-1.png', caption: 'Loan pre-eligibility check with live risk score' },
       { src: 'images/creditiq-2.png', caption: 'Default rate analytics by grade, purpose and risk band' },
-      { src: 'images/creditiq-3.png', caption: 'GROQ assistant explaining a declined application' }
+      { src: 'images/creditiq-3.png', caption: 'Gemini assistant explaining a declined application' }
     ],
     problem: 'A rejected loan applicant is told no and nothing else. They cannot tell what to fix, and the lender cannot show that the decision was consistent.',
-    solution: 'A full decision pipeline — pre-eligibility rules, ML risk scoring, risk banding, then a plain-English explanation — trained on 265,000+ Lending Club loans from 2007 to 2018, with a GROQ-powered assistant that answers "why was I declined?" in natural language.',
+    solution: 'A full decision pipeline — pre-eligibility rules, ML risk scoring, risk banding, then a plain-English explanation — trained on 265,000+ Lending Club loans from 2007 to 2018, with a Gemini-powered assistant that answers "why was I declined?" in natural language.',
     architecture: archCreditIQ,
     challenges: [
       'Lending Club data is heavily imbalanced and full of fields that would not exist at application time.',
@@ -1701,9 +1740,9 @@ const PROJECTS = {
       'Trained and compared three ML models; XGBoost selected on 0.743 ROC-AUC and 81.2% test accuracy.',
       'Built the full pipeline: eligibility rules → risk scoring → risk banding → explanation.',
       'Analytics dashboard covering default rate by grade, purpose and risk band.',
-      'Integrated a GROQ assistant so declined applicants can ask, in plain language, what drove the decision.'
+      'Integrated a Gemini assistant so declined applicants can ask, in plain language, what drove the decision.'
     ],
-    stack: ['Python', 'XGBoost', 'Scikit-Learn', 'Streamlit', 'GROQ API'],
+    stack: ['Python', 'XGBoost', 'Scikit-Learn', 'Streamlit', 'Gemini API'],
     metrics: [
       { v: '0.743', k: 'ROC-AUC' }, { v: '81.2%', k: 'Test accuracy' },
       { v: '265k+', k: 'Loan records' }, { v: '3', k: 'Models compared' }
@@ -1722,7 +1761,7 @@ const CERTIFICATES = [
 ];
 
 /* Floating tech chips */
-const TECH = ['Python', 'Flask', 'TensorFlow', 'Pandas', 'Docker', 'Git', 'React', 'GROQ', 'Llama'];
+const TECH = ['Python', 'Flask', 'TensorFlow', 'Pandas', 'Docker', 'Git', 'React', 'Gemini', 'Llama'];
 
 /* ----------------------------------------------------------------------------
    3. BOOT — loading screen
@@ -1990,7 +2029,7 @@ function animateCounter(el) {
   if (cgrid) {
     CERTIFICATES.forEach((c, i) => {
       const card = document.createElement('article');
-      card.className = 'cert-card';
+      card.className = 'cert-card reveal';
       card.innerHTML =
         '<div class="cert-thumb" tabindex="0" role="button" aria-label="View ' + c.name + ' certificate">' +
           '<img src="' + c.img + '" alt="' + c.name + ' certificate from ' + c.issuer + '" loading="lazy" decoding="async" width="800" height="560">' +
@@ -2248,7 +2287,7 @@ function showToast(message) {
 /* ============================================================================
    16. NOVA — AI assistant client
    The browser never talks to a model provider directly. It calls the Flask
-   backend (POST /api/chat), which holds the GROQ key server-side.
+   backend (POST /api/chat), which holds the Gemini key server-side.
    ========================================================================== */
 const Nova = (function () {
   const panel = $('#nova-panel');
