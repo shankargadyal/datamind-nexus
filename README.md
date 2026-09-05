@@ -21,7 +21,7 @@
 
 ## 🌐 Live Demo
 
-**Portfolio:** https://your-portfolio-url.com
+**Portfolio:** https://datamind-nexus-shankar-portfolio-887682911552.asia-south1.run.app/
 
 ---
 
