@@ -100,7 +100,14 @@ FACTS
   loan records (2007-2018); best model XGBoost at 0.743 ROC-AUC and 81.2% test accuracy.
   Includes an analytics dashboard (default rate by grade, purpose and risk band) and a
   GROQ-powered assistant that explains declines to applicants.
-
+  
+- Generative AI Internship: Prodigy InfoTech, 1-31 August 2026 (1 month), Outstanding remarks,
+  certificate issued 6 September 2026. Two completed tasks:
+  Task 1 - GPT-2 Text Generation (github.com/shankargadyal/PRODIGY_GA_Task1): fine-tuned/ran GPT-2
+  for text generation on custom data, with training and validation loss tracked.
+  Task 2 - Markov Chain Text Generation (github.com/shankargadyal/PRODIGY_GA_Task3): a Markov
+  Chain based text generator (not a neural network or transformer).
+  
 - Recurring theme: he does not just build models, he finds what is wrong with them
   (data leakage, exposed credentials, gaps against real agentic-AI standards) and fixes it
   before shipping. All four projects are deployed and publicly reachable.
@@ -134,33 +141,23 @@ def client_ip() -> str:
 # GROQ call
 # --------------------------------------------------------------------------- #
 
-def build_contents(message: str, history: List[Dict[str, str]]) -> List[Dict[str, Any]]:
-    """Translate the frontend's history format into GROQ's `contents` array."""
-    contents: List[Dict[str, Any]] = []
+def call_groq(message: str, history: List[Dict[str, str]]) -> str:
+    # NEW: actually include prior turns so NOVA has real multi-turn context —
+    # the old version dropped `history` on the floor and answered every
+    # message as if it were the first one.
+    messages: List[Dict[str, str]] = [{"role": "system", "content": NOVA_SYSTEM_PROMPT}]
     for turn in history[-MAX_HISTORY_TURNS:]:
-        role = "user" if turn.get("role") == "user" else "model"
+        role = "user" if turn.get("role") == "user" else "assistant"
         text = str(turn.get("content", ""))[:MAX_MESSAGE_CHARS]
         if text:
-            contents.append({"role": role, "parts": [{"text": text}]})
-    contents.append({"role": "user", "parts": [{"text": message}]})
-    return contents
+            messages.append({"role": role, "content": text})
+    messages.append({"role": "user", "content": message})
 
-
-def call_groq(message: str, history: List[Dict[str, str]]) -> str:
     payload = {
         "model": GROQ_MODEL,
-        "messages": [
-            {
-                "role": "system",
-                "content": NOVA_SYSTEM_PROMPT
-            },
-            {
-                "role": "user",
-                "content": message
-            }
-        ],
+        "messages": messages,
         "temperature": 0.4,
-        "max_tokens": 512
+        "max_tokens": 512,
     }
     response = requests.post(
         GROQ_URL,
@@ -174,12 +171,11 @@ def call_groq(message: str, history: List[Dict[str, str]]) -> str:
     response.raise_for_status()
     data = response.json()
 
-    choices = data.get("choices") or []
-    if not choices:
+    result_choices = data.get("choices") or []
+    if not result_choices:
         raise ValueError("Groq returned no choices")
 
-    text = choices[0]["message"]["content"].strip()
-
+    text = result_choices[0]["message"]["content"].strip()
     if not text:
         raise ValueError("Groq returned an empty response")
 
