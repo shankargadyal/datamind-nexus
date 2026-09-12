@@ -9,7 +9,7 @@ environment — it is never sent to the browser.
 
 Run locally:
     pip install -r requirements.txt
-    export GROQ_API_KEY="your-key"t
+    export GROQ_API_KEY="your-key"
     python app.py
 """
 
@@ -17,7 +17,6 @@ from __future__ import annotations
 
 import logging
 import os
-from random import choices
 import time
 from collections import defaultdict, deque
 from typing import Any, Deque, Dict, List
@@ -70,6 +69,13 @@ FACTS
 - Availability: open to AI/ML internships and full-time roles, available immediately,
   Bengaluru or remote.
 
+- Generative AI Internship: Prodigy InfoTech, 1-31 August 2026 (1 month), Outstanding remarks,
+  certificate issued 6 September 2026. Two completed tasks:
+  Task 1 - GPT-2 Text Generation (github.com/shankargadyal/PRODIGY_GA_Task1): fine-tuned/ran GPT-2
+  for text generation on custom data, with training and validation loss tracked.
+  Task 2 - Markov Chain Text Generation (github.com/shankargadyal/PRODIGY_GA_Task3): a Markov
+  Chain based text generator (not a neural network or transformer).
+
 - DataMind AI: autonomous multi-agent analytics platform. Five agents in sequence:
   Detective -> Analyst -> ML Engineer -> Guardrails -> Reporter. It ingests a raw dataset
   and produces a full ML analysis and report with no manual steps. Shankar audited it against
@@ -100,14 +106,7 @@ FACTS
   loan records (2007-2018); best model XGBoost at 0.743 ROC-AUC and 81.2% test accuracy.
   Includes an analytics dashboard (default rate by grade, purpose and risk band) and a
   GROQ-powered assistant that explains declines to applicants.
-  
-- Generative AI Internship: Prodigy InfoTech, 1-31 August 2026 (1 month), Outstanding remarks,
-  certificate issued 6 September 2026. Two completed tasks:
-  Task 1 - GPT-2 Text Generation (github.com/shankargadyal/PRODIGY_GA_Task1): fine-tuned/ran GPT-2
-  for text generation on custom data, with training and validation loss tracked.
-  Task 2 - Markov Chain Text Generation (github.com/shankargadyal/PRODIGY_GA_Task3): a Markov
-  Chain based text generator (not a neural network or transformer).
-  
+
 - Recurring theme: he does not just build models, he finds what is wrong with them
   (data leakage, exposed credentials, gaps against real agentic-AI standards) and fixes it
   before shipping. All four projects are deployed and publicly reachable.
@@ -143,8 +142,8 @@ def client_ip() -> str:
 
 def call_groq(message: str, history: List[Dict[str, str]]) -> str:
     # NEW: actually include prior turns so NOVA has real multi-turn context —
-    # the old version dropped `history` on the floor and answered every
-    # message as if it were the first one.
+    # the old version built a payload with only the system prompt and the
+    # current message, silently dropping every `history` turn the frontend sent.
     messages: List[Dict[str, str]] = [{"role": "system", "content": NOVA_SYSTEM_PROMPT}]
     for turn in history[-MAX_HISTORY_TURNS:]:
         role = "user" if turn.get("role") == "user" else "assistant"
@@ -157,7 +156,7 @@ def call_groq(message: str, history: List[Dict[str, str]]) -> str:
         "model": GROQ_MODEL,
         "messages": messages,
         "temperature": 0.4,
-        "max_tokens": 512,
+        "max_tokens": 512
     }
     response = requests.post(
         GROQ_URL,
@@ -176,6 +175,7 @@ def call_groq(message: str, history: List[Dict[str, str]]) -> str:
         raise ValueError("Groq returned no choices")
 
     text = result_choices[0]["message"]["content"].strip()
+
     if not text:
         raise ValueError("Groq returned an empty response")
 
