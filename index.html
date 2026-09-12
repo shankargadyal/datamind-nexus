@@ -90,13 +90,12 @@
    2. RESET + BASE
    ============================================================ */
 *{box-sizing:border-box; margin:0; padding:0;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth; overflow-x:hidden;}
 body{
   background:var(--bg); color:var(--text);
   font-family:'Inter', system-ui, -apple-system, sans-serif;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
 }
 body.no-scroll{overflow:hidden;}
 a{color:inherit; text-decoration:none;}
@@ -1021,7 +1020,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
       <p class="subhead">Building AI products that solve real-world problems — from explainable credit scoring to multi-agent analytics copilots.</p>
 
       <div class="avail-row">
-        <span class="avail-badge green"><span class="dot" aria-hidden="true"></span> Available for Internship</span>
+        <span class="avail-badge green"><span class="dot" aria-hidden="true"></span> Generative AI Intern @ Prodigy InfoTech</span>
         <span class="avail-badge violet"><span class="dot" aria-hidden="true"></span> Open to AI/ML Roles</span>
       </div>
 
@@ -1196,17 +1195,6 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
     </div>
 
     <div class="tl-item teal reveal">
-      <div class="tl-date">Aug 2026 · completed</div>
-      <div class="tl-title">Generative AI Intern <span class="tl-kind">Internship</span></div>
-      <div class="tl-org">Prodigy InfoTech · 1 month · Outstanding remarks</div>
-      <div class="tl-desc">
-    Completed two text-generation tasks:
-    <a href="https://github.com/shankargadyal/PRODIGY_GA_Task1" target="_blank" rel="noopener" style="color:var(--accent-2)">01 — GPT-2 Text Generation →</a> ·
-    <a href="https://github.com/shankargadyal/PRODIGY_GA_Task3" target="_blank" rel="noopener" style="color:var(--accent-2)">02 — Markov Chain Text Generation →</a>
-  </div>
-</div>
-
-    <div class="tl-item teal reveal">
       <div class="tl-date">2025 · shipped</div>
       <div class="tl-title">DataMind AI — multi-agent analytics platform <span class="tl-kind">Project</span></div>
       <div class="tl-org">Personal · Groq LLaMA 3.3 70B, Flask, React</div>
@@ -1227,6 +1215,17 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
       <div class="tl-desc">Churn, RFM segmentation and CLV in one dashboard; a full credit decision pipeline trained on 265,000+ loan records in the other.</div>
     </div>
 
+    <div class="tl-item teal reveal">
+      <div class="tl-date">Aug 2026 · completed</div>
+      <div class="tl-title">Generative AI Intern <span class="tl-kind">Internship</span></div>
+      <div class="tl-org">Prodigy InfoTech · 1 month · Outstanding remarks</div>
+      <div class="tl-desc">
+        Completed two text-generation tasks:
+        <a href="https://github.com/shankargadyal/PRODIGY_GA_Task1" target="_blank" rel="noopener" style="color:var(--accent-2)">01 — GPT-2 Text Generation →</a> ·
+        <a href="https://github.com/shankargadyal/PRODIGY_GA_Task3" target="_blank" rel="noopener" style="color:var(--accent-2)">02 — Markov Chain Text Generation →</a>
+      </div>
+    </div>
+
     <div class="tl-item reveal">
       <div class="tl-date">2021 — 2024 · completed</div>
       <div class="tl-title">BSc Data Science <span class="tl-kind">Education</span></div>
@@ -1236,7 +1235,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
 
     <div class="tl-item muted reveal">
       <div class="tl-date">Open — 2026</div>
-      <div class="tl-title">AI / ML Engineering Internship <span class="tl-kind">Seeking</span></div>
+      <div class="tl-title">Open to AI/ML Roles <span class="tl-kind">Available</span></div>
       <div class="tl-org">Available immediately · Bengaluru or remote</div>
       <div class="tl-desc">Looking for a team shipping real AI systems where I can own a slice end-to-end. <a href="#contact" style="color:var(--accent-2)">Get in touch →</a></div>
     </div>
@@ -1768,7 +1767,7 @@ const PROJECTS = {
 const CERTIFICATES = [
   { name: 'Machine Learning for Python', issuer: 'Infosys Springboard', meta: 'Completed · Certificate ID pending', img: 'images/cert-infosys-ml.png' },
   { name: 'Natural Language Processing', issuer: 'Infosys Springboard', meta: 'Completed · Certificate ID pending', img: 'images/cert-infosys-nlp.png' },
-  { name: 'Next certification in progress', issuer: 'Placeholder', meta: 'Reserved slot — replace when issued', img: 'images/cert-placeholder.png' }
+  { name: 'Generative AI Internship', issuer: 'Prodigy InfoTech', meta: 'August 2026 · Outstanding remarks', pdf: 'certificates/prodigy-genai.pdf' }
 ];
 
 /* Floating tech chips */
@@ -1950,8 +1949,7 @@ function scrollToId(id) {
 /* ----------------------------------------------------------------------------
    9. SCROLL REVEAL (projects + .reveal elements)
    -------------------------------------------------------------------------- */
-(function reveals() {
-  const items = $$('.project, .reveal');
+function observeReveals(items) {
   if (!('IntersectionObserver' in window)) {
     items.forEach(el => el.classList.add('in-view'));
     return;
@@ -1966,7 +1964,8 @@ function scrollToId(id) {
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   items.forEach(el => io.observe(el));
-})();
+}
+observeReveals($$('.project, .reveal'));
 
 /* ----------------------------------------------------------------------------
    10. ANIMATED COUNTERS
@@ -2041,6 +2040,23 @@ function animateCounter(el) {
     CERTIFICATES.forEach((c, i) => {
       const card = document.createElement('article');
       card.className = 'cert-card reveal';
+
+      // NEW: PDF certificates (no image scan available) get a direct link
+      // instead of a lightbox thumbnail — a lightbox expects an image src,
+      // and a PDF can't render there without a fake placeholder image.
+      if (c.pdf) {
+        card.innerHTML =
+          '<div class="cert-thumb" style="display:flex;align-items:center;justify-content:center;font-size:34px;" aria-hidden="true">📄</div>' +
+          '<div class="cert-body">' +
+            '<div class="cert-name">' + c.name + '</div>' +
+            '<div class="cert-issuer">' + c.issuer + '</div>' +
+            '<div class="cert-meta">' + c.meta + '</div>' +
+            '<a class="btn btn-ghost" href="' + c.pdf + '" target="_blank" rel="noopener" style="margin-top:10px; font-size:12px; padding:6px 12px;">View Certificate →</a>' +
+          '</div>';
+        cgrid.appendChild(card);
+        return;
+      }
+
       card.innerHTML =
         '<div class="cert-thumb" tabindex="0" role="button" aria-label="View ' + c.name + ' certificate">' +
           '<img src="' + c.img + '" alt="' + c.name + ' certificate from ' + c.issuer + '" loading="lazy" decoding="async" width="800" height="560">' +
@@ -2052,7 +2068,8 @@ function animateCounter(el) {
         '</div>';
       const thumb = $('.cert-thumb', card);
       const open = () => Lightbox.openCustom(
-        CERTIFICATES.map(x => ({ src: x.img, caption: x.name + ' — ' + x.issuer })), i
+        CERTIFICATES.filter(x => !x.pdf).map(x => ({ src: x.img, caption: x.name + ' — ' + x.issuer })),
+        CERTIFICATES.filter(x => !x.pdf).indexOf(c)
       );
       thumb.addEventListener('click', open);
       thumb.addEventListener('keydown', e => {
@@ -2060,6 +2077,11 @@ function animateCounter(el) {
       });
       cgrid.appendChild(card);
     });
+    // NEW: the reveals() observer already ran (section 9) before these
+    // cards existed, so it never saw them — re-run it on just the cards
+    // that were missing an observer, otherwise they sit at opacity:0
+    // forever and only become visible via the unrelated lightbox click.
+    observeReveals($$('.cert-card.reveal', cgrid));
   }
 })();
 
