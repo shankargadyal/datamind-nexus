@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0a0a0d">
+<meta name="theme-color" content="#050914">
 
 <title>Shankar Gadyal — AI Engineer &amp; Machine Learning Engineer</title>
 <meta name="description" content="Shankar Gadyal is an AI Engineer and MSc Data Science student in Bengaluru building and shipping production AI systems: multi-agent analytics, RAG assistants, credit risk models and time-series forecasting.">
@@ -36,7 +36,7 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <!-- Structured data -->
 <script type="application/ld+json">
@@ -64,18 +64,18 @@
 
 <style>
 /* ============================================================
-   1. DESIGN TOKENS  (palette unchanged from original build)
+   1. DESIGN TOKENS
    ============================================================ */
 :root{
-  --bg:#0a0a0d;
-  --surface:#131317;
-  --surface-2:#1a1a1f;
-  --border:#26262d;
-  --text:#f2f1f5;
-  --muted:#9a99a6;
-  --accent:#6c63ff;
-  --accent-2:#8b7fff;
-  --teal:#2fd6b0;
+  --bg:#050914;
+  --surface:#0B1628;
+  --surface-2:#112039;
+  --border:#263754;
+  --text:#F5F8FF;
+  --muted:#a8b7cc;
+  --accent:#477DFF;
+  --accent-2:#a3bdff;
+  --teal:#70F5ED;
 
   --radius-sm:8px;
   --radius:12px;
@@ -112,12 +112,6 @@ section, nav, footer, .footer-inner, .footer-bottom, .contact-card, .gh-card, .p
   max-width:none; /* allow it to be wider than parent inside scroll */
 }
 
-/* Tech floating chips were positioned at 88%,92% + width = >100vw */
-.tech-field{
-  max-width:100vw;
-  overflow:hidden;
-}
-
 /* Safety */
 img, video, iframe, pre, code{
   max-width:100%;
@@ -146,110 +140,9 @@ button{font-family:inherit;}
 }
 .skip-link:focus{top:0;}
 
-/* ============================================================
-   3. AMBIENT BACKGROUND
-   ============================================================ */
-.bg-glow{
-  position:fixed; inset:0; z-index:-2; pointer-events:none;
-  background:
-    radial-gradient(600px 400px at 15% 8%, rgba(108,99,255,0.14), transparent 70%),
-    radial-gradient(500px 350px at 85% 30%, rgba(47,214,176,0.08), transparent 70%);
-}
-.bg-grid{
-  position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.35;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
-  background-size:64px 64px;
-  mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
-  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
-}
-
-/* Floating tech icons (ambient, desktop-weighted) */
-.tech-field{position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden;}
-.tech-chip{
-  position:absolute;
-  font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.02em;
-  color:rgba(154,153,166,0.55);
-  border:1px solid rgba(38,38,45,0.9); background:rgba(19,19,23,0.55);
-  padding:5px 11px; border-radius:20px; white-space:nowrap;
-  backdrop-filter:blur(4px);
-  animation:float-y linear infinite;
-  will-change:transform;
-}
-@keyframes float-y{
-  0%   {transform:translate3d(0,0,0) rotate(0deg);}
-  50%  {transform:translate3d(0,-26px,0) rotate(.6deg);}
-  100% {transform:translate3d(0,0,0) rotate(0deg);}
-}
-@media (max-width:900px){ .tech-chip:nth-child(n+6){display:none;} }
-@media (max-width:640px){ .tech-field{display:none;} }
-
-/* ============================================================
-   4. LOADING SCREEN
-   ============================================================ */
-#loader{
-  position:fixed; inset:0; z-index:9999;
-  background:var(--bg);
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px;
-  transition:opacity .6s var(--ease), visibility .6s var(--ease);
-}
-#loader.done{opacity:0; visibility:hidden;}
-.loader-mark{
-  font-size:19px; font-weight:800; letter-spacing:-0.02em;
-  background:linear-gradient(90deg, var(--text) 0%, var(--accent) 40%, var(--teal) 60%, var(--text) 100%);
-  background-size:220% 100%;
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-  animation:mark-sweep 2.2s linear infinite;
-}
-@keyframes mark-sweep{ from{background-position:220% 0;} to{background-position:-20% 0;} }
-.loader-ring{
-  width:44px; height:44px; border-radius:50%;
-  border:2px solid var(--border); border-top-color:var(--accent); border-right-color:var(--teal);
-  animation:spin .9s linear infinite;
-}
-@keyframes spin{ to{transform:rotate(360deg);} }
-.loader-bar{ width:180px; height:2px; background:var(--border); border-radius:2px; overflow:hidden; }
-.loader-bar i{
-  display:block; height:100%; width:40%;
-  background:linear-gradient(90deg, var(--accent), var(--teal));
-  animation:bar-slide 1.1s var(--ease) infinite;
-}
-@keyframes bar-slide{ 0%{transform:translateX(-110%);} 100%{transform:translateX(320%);} }
-.loader-sub{font-size:12px; color:var(--muted); letter-spacing:.08em; text-transform:uppercase;}
-
-/* ============================================================
-   5. SCROLL PROGRESS + CURSOR GLOW
-   ============================================================ */
 #scroll-progress{
-  position:fixed; top:0; left:0; height:2px; width:100%; z-index:400;
-  transform:scaleX(0); transform-origin:0 50%;
-  background:linear-gradient(90deg, var(--accent), var(--teal));
-  will-change:transform;
-}
-#cursor-glow{
-  position:fixed; top:0; left:0; z-index:0; pointer-events:none;
-  width:420px; height:420px; margin:-210px 0 0 -210px; border-radius:50%;
-  background:radial-gradient(circle, rgba(108,99,255,0.10), transparent 62%);
-  opacity:0; transition:opacity .35s var(--ease);
-  will-change:transform;
-}
-#cursor-dot{
-  position:fixed; top:0; left:0; z-index:401; pointer-events:none;
-  width:6px; height:6px; margin:-3px 0 0 -3px; border-radius:50%;
-  background:var(--accent-2); opacity:0;
-  transition:opacity .3s var(--ease), width .18s var(--ease), height .18s var(--ease), margin .18s var(--ease), background .18s var(--ease);
-  box-shadow:0 0 12px rgba(139,127,255,0.8);
-}
-/* Widens into a ring over anything clickable. Size, not transform —
-   the follow loop owns the transform property. */
-#cursor-dot.hot{
-  width:22px; height:22px; margin:-11px 0 0 -11px;
-  background:transparent; border:1.5px solid var(--accent-2); box-shadow:none;
-}
-@media (hover:hover) and (pointer:fine){
-  body.cursor-ready #cursor-glow{opacity:1;}
-  body.cursor-ready #cursor-dot{opacity:.9;}
+  position:fixed; inset:0 0 auto; height:2px; z-index:210;
+  background:var(--teal); pointer-events:none; transform:scaleX(0); transform-origin:left;
 }
 
 /* ============================================================
@@ -360,101 +253,6 @@ h2.section-heading{
 /* ============================================================
    8. HERO
    ============================================================ */
-.hero{ padding-top:150px; text-align:left; }
-.hero-grid{ display:grid; grid-template-columns:1fr auto; gap:48px; align-items:center; }
-@media (max-width:768px){
-  .hero{ padding-top:100px; text-align:center; }
-  .hero-grid{ grid-template-columns:1fr; gap:20px; justify-items:center; }
-  .hero-portrait{ order:-1; margin-bottom:4px; }
-  .hero-copy{ display:flex; flex-direction:column; align-items:center; width:100%; }
-
-  .avatar-ring{ width:120px; height:120px; }
-  .avatar-ring::after{ inset:-8px; }
-
-  .eyebrow{ font-size:11.5px; padding:5px 12px; margin-bottom:16px; }
-  
-  h1.headline{
-    font-size:clamp(1.7rem, 7vw, 2.3rem);
-    max-width:100%;
-    overflow-wrap:break-word;
-    word-break:break-word;
-    white-space:normal;
- }
-#role-rotator{
-    display:inline-block;
-    max-width:100%;
-    white-space:normal;
- }
-
-  .subhead{ font-size:0.98rem; max-width:100%; margin-bottom:18px; }
-  .avail-row{ justify-content:center; margin-bottom:22px; }
-
-  .hero-actions{ justify-content:center; gap:10px; }
-  .hero-actions .btn{ font-size:13.5px; padding:10px 16px; flex:1 1 auto; justify-content:center; }
-}
-
-@media (max-width:480px){
-  .hero-actions{ flex-direction:column; width:100%; }
-  .hero-actions .btn{ width:100%; }
-
-  .stat-card{ padding:14px 10px; }
-  .stat-num{ font-size:1.35rem; }
-}
-.eyebrow{
-  display:inline-flex; align-items:center; gap:8px;
-  font-size:13px; color:var(--muted);
-  border:1px solid var(--border); background:var(--surface);
-  padding:6px 14px; border-radius:20px; margin-bottom:24px;
-}
-.eyebrow .pulse{
-  width:6px; height:6px; border-radius:50%; background:var(--teal);
-  box-shadow:0 0 8px var(--teal); animation:pulse-dot 2s ease-in-out infinite;
-}
-@keyframes pulse-dot{0%,100%{opacity:1; transform:scale(1);} 50%{opacity:.45; transform:scale(.82);}}
-h1.headline{
-  font-size:clamp(2.4rem, 6vw, 4rem);
-  font-weight:800; letter-spacing:-0.03em; line-height:1.05;
-  margin-bottom:18px;
-}
-h1.headline .roles{ color:var(--accent); }
-#role-rotator::after{
-  content:''; display:inline-block; width:2px; height:.92em;
-  background:var(--accent); margin-left:4px; vertical-align:-.08em;
-  animation:caret 1s steps(1) infinite;
-}
-@keyframes caret{50%{opacity:0;}}
-.subhead{ font-size:1.15rem; color:var(--muted); max-width:560px; margin-bottom:22px; }
-
-.avail-row{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:30px; }
-.avail-badge{
-  display:inline-flex; align-items:center; gap:7px;
-  font-size:12.5px; font-weight:600; padding:6px 13px; border-radius:20px;
-}
-.avail-badge.green{ color:var(--teal); border:1px solid rgba(47,214,176,.35); background:rgba(47,214,176,.08); }
-.avail-badge.violet{ color:var(--accent-2); border:1px solid rgba(139,127,255,.35); background:rgba(108,99,255,.09); }
-.avail-badge .dot{ width:6px; height:6px; border-radius:50%; background:currentColor; }
-
-.hero-actions{ display:flex; gap:14px; flex-wrap:wrap; }
-
-/* Circular profile photo with animated gradient border */
-.hero-portrait{ display:flex; justify-content:center; }
-.avatar-ring{
-  position:relative; width:212px; height:212px; border-radius:50%; padding:3px;
-  background:conic-gradient(from 0deg, var(--accent), var(--teal), var(--accent-2), var(--accent));
-  animation:ring-spin 6s linear infinite;
-  box-shadow:0 0 44px rgba(108,99,255,0.22);
-}
-@keyframes ring-spin{ to{transform:rotate(360deg);} }
-.avatar-ring::after{
-  content:''; position:absolute; inset:-14px; border-radius:50%;
-  border:1px dashed rgba(154,153,166,0.18); pointer-events:none;
-}
-.avatar-ring img{
-  width:100%; height:100%; border-radius:50%; object-fit:cover;
-  background:var(--surface-2); border:3px solid var(--bg);
-  animation:ring-spin 6s linear infinite reverse;
-}
-
 /* ============================================================
    9. STATISTICS (animated counters)
    ============================================================ */
@@ -960,10 +758,8 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
    22. LANDSCAPE + REDUCED MOTION + PRINT
    ============================================================ */
 @media (max-height:520px) and (orientation:landscape){
-  .hero{padding-top:96px;}
   section{padding:56px 24px;}
   #nova-panel{height:calc(100vh - 40px); bottom:20px;}
-  .avatar-ring{width:130px; height:130px;}
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -973,36 +769,38 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
     transition-duration:.001ms !important; scroll-behavior:auto !important;
   }
   .reveal, .project{opacity:1 !important; transform:none !important;}
-  #cursor-glow, #cursor-dot{display:none;}
 }
 
 @media print{
-  nav, #nova-orb, #nova-panel, #loader, .tech-field, #scroll-progress, #cursor-glow, #cursor-dot, footer{display:none !important;}
+  nav, #nova-orb, #nova-panel, #cinematic-intro, #scroll-progress, footer{display:none !important;}
   body{background:#fff; color:#000;}
   section{padding:20px 0; max-width:100%;}
 }
 </style>
+<link rel="stylesheet" href="cinematic.css">
+<script src="cinematic.js" defer></script>
 </head>
 <body>
 
 <!-- ============================================================
      LOADING SCREEN
      ============================================================ -->
-<div id="loader" role="status" aria-live="polite" aria-label="Loading portfolio">
-  <div class="loader-ring" aria-hidden="true"></div>
-  <div class="loader-mark">DataMind Nexus</div>
-  <div class="loader-bar" aria-hidden="true"><i></i></div>
-  <div class="loader-sub">Initialising</div>
-</div>
-
-<!-- Ambient layers -->
+<dialog id="cinematic-intro" aria-label="DataMind Nexus introduction">
+  <div class="intro-stage" aria-hidden="true">
+    <div class="intro-light"><i></i></div>
+    <div class="intro-portrait"></div>
+    <div class="intro-name"></div>
+    <div class="intro-identity">
+      <div class="intro-role">
+        <span>AI ENGINEER</span>
+        <span>MACHINE LEARNING DEVELOPER</span>
+      </div>
+      <div class="intro-brand">DATAMIND NEXUS</div>
+    </div>
+  </div>
+  <button type="button" class="intro-skip" autofocus>Skip intro <span aria-hidden="true">↗</span></button>
+</dialog>
 <div id="scroll-progress" aria-hidden="true"></div>
-<div id="cursor-glow" aria-hidden="true"></div>
-<div id="cursor-dot" aria-hidden="true"></div>
-<div class="bg-glow" aria-hidden="true"></div>
-<div class="bg-grid" aria-hidden="true"></div>
-<div class="tech-field" id="tech-field" aria-hidden="true"></div>
-
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============================================================
@@ -1051,8 +849,9 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
 <section class="hero" id="home">
   <div class="hero-grid">
     <div class="hero-copy">
-      <div class="eyebrow"><span class="pulse" aria-hidden="true"></span> MSc Data Science · Dayananda Sagar University</div>
-      <h1 class="headline">Hi, I'm Shankar Gadyal<br><span class="roles" id="role-rotator" aria-live="polite">AI Engineer</span></h1>
+      <p class="hero-name">Shankar Gadyal</p>
+      <h1 class="headline" tabindex="-1">Engineering <em>Intelligence.</em></h1>
+      <p class="hero-role">AI Engineer <span aria-hidden="true">/</span> Machine Learning Developer</p>
       <p class="subhead">Building AI products that solve real-world problems — from explainable credit scoring to multi-agent analytics copilots.</p>
 
       <div class="avail-row">
@@ -1061,7 +860,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
       </div>
 
       <div class="hero-actions">
-        <button class="btn btn-primary" onclick="scrollToId('projects')">View Projects</button>
+        <a class="btn btn-primary" href="#projects">Explore Projects <span aria-hidden="true">↘</span></a>
         <a class="btn btn-ghost" href="resume.pdf" download="Shankar_Gadyal_Resume.pdf">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download Resume
@@ -1072,11 +871,129 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
     </div>
 
     <div class="hero-portrait">
-      <div class="avatar-ring">
-        <img src="images/profile.jpg" alt="Portrait of Shankar Gadyal" width="212" height="212" fetchpriority="high" decoding="async">
-      </div>
+      <figure class="portrait-frame">
+        <div class="portrait-image">
+          <img src="images/profile-960.webp" alt="Portrait of Shankar Gadyal" width="960" height="960" fetchpriority="high" decoding="async">
+        </div>
+        <figcaption>MSc Data Science · Dayananda Sagar University</figcaption>
+      </figure>
     </div>
   </div>
+</section>
+
+<!-- ============================================================
+     PROJECTS
+     ============================================================ -->
+<section id="projects">
+  <h2 class="section-heading">Selected projects</h2>
+  <p class="section-note">Explore the architecture, model results, and engineering decisions behind four AI systems.</p>
+
+  <!-- DataMind AI -->
+  <article class="project" id="p-datamind">
+    <div class="project-head">
+      <div><h3 class="project-title">DataMind AI</h3><div class="project-tag">Autonomous multi-agent analytics platform</div></div>
+      <div class="project-status personal">Personal Project</div>
+    </div>
+    <div class="project-layout">
+      <div class="gallery" data-gallery="datamind" aria-label="DataMind AI screenshots"></div>
+      <div class="project-copy">
+        <div class="project-row"><b>Problem —</b> most small businesses need data analysis but can't afford a data science team.</div>
+        <div class="project-row"><b>Solution —</b> a pipeline of specialized AI agents — Detective → Analyst → ML Engineer → Guardrails → Reporter — that investigates a dataset, builds models, and writes a full report autonomously.</div>
+        <div class="project-row"><b>Challenge —</b> audited the build against a 6-part framework for genuine agentic systems (RAG, Multi-Agent, Guardrails/Eval, LLMOps, Human-in-the-Loop, MCP/A2A) and found real gaps in four of them.</div>
+        <div class="project-row"><b>Solved —</b> added lightweight TF-IDF retrieval (avoiding a heavy install that would break free-tier hosting), a guardrails agent that checks the model's own confidence claims for consistency, full per-call latency/token logging, and a human-review gate before flagged results unlock.</div>
+
+        <div class="stack-row"><span>Flask</span><span>Groq LLaMA 3.3 70B</span><span>Scikit-Learn</span><span>SHAP</span><span>React</span></div>
+        <div class="project-links">
+          <button class="details-btn" data-project="datamind">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            View Details
+          </button>
+          <a href="https://datamind-ai-887682911552.asia-south1.run.app/" target="_blank" rel="noopener">Live Demo →</a>
+          <a href="https://github.com/shankargadyal/DataMind-AI" target="_blank" rel="noopener">GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- FinSight AI -->
+  <article class="project" id="p-finsight">
+    <div class="project-head">
+      <div><h3 class="project-title">FinSight AI</h3><div class="project-tag">Stock market forecasting platform — MSc capstone</div></div>
+      <div class="project-status">Live</div>
+    </div>
+    <div class="project-layout">
+      <div class="gallery" data-gallery="finsight" aria-label="FinSight AI screenshots"></div>
+      <div class="project-copy">
+        <div class="project-row"><b>Problem —</b> retail investors get black-box price predictions with no reasoning behind them.</div>
+        <div class="project-row"><b>Solution —</b> combines Linear Regression, ARIMA, LSTM and VADER sentiment analysis, with a risk analyzer, a prediction-confidence meter, and a RAG-powered financial assistant.</div>
+        <div class="project-row"><b>Challenge —</b> a senior-level code audit surfaced real production risk: a live database committed to a public repo and debug mode hardcoded on.</div>
+        <div class="project-row"><b>Solved —</b> removed the exposed database, disabled debug mode, corrected the documentation, then shipped a v3 rebuild with the RAG assistant. Deployed on Google Cloud Run (asia-south1).</div>
+
+        <div class="stack-row"><span>Flask</span><span>LSTM</span><span>ARIMA</span><span>VADER</span><span>RAG</span></div>
+        <div class="project-links">
+          <button class="details-btn" data-project="finsight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            View Details
+          </button>
+          <a href="https://finsight-ai-887682911552.asia-south1.run.app" target="_blank" rel="noopener">Live Demo →</a>
+          <a href="https://github.com/shankargadyal/Finsight_AI" target="_blank" rel="noopener">GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CustomerIQ -->
+  <article class="project" id="p-customeriq">
+    <div class="project-head">
+      <div><h3 class="project-title">CustomerIQ</h3><div class="project-tag">Customer intelligence: churn, segmentation, CLV</div></div>
+      <div class="project-status">Live</div>
+    </div>
+    <div class="project-layout">
+      <div class="gallery" data-gallery="customeriq" aria-label="CustomerIQ screenshots"></div>
+      <div class="project-copy">
+        <div class="project-row"><b>Problem —</b> businesses need to know which customers will leave before they do, and why.</div>
+        <div class="project-row"><b>Challenge —</b> the first churn model returned 100% accuracy — not a result, a red flag.</div>
+        <div class="project-row"><b>Solved —</b> traced it to data leakage from features correlated with the target, rebuilt the pipeline with proper train/test splits and cross-validation, then benchmarked six models.</div>
+        <div class="project-row"><b>Result —</b> Random Forest, 82.26% test accuracy, verified honestly — plus RFM segmentation and CLV estimation.</div>
+
+        <div class="stack-row"><span>Random Forest</span><span>XGBoost</span><span>Flask</span><span>Chart.js</span></div>
+        <div class="project-links">
+          <button class="details-btn" data-project="customeriq">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            View Details
+          </button>
+          <a href="https://coustomeriq.onrender.com" target="_blank" rel="noopener">Live Demo →</a>
+          <a href="https://github.com/shankargadyal/CustomerIQ" target="_blank" rel="noopener">GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CreditIQ -->
+  <article class="project" id="p-creditiq">
+    <div class="project-head">
+      <div><h3 class="project-title">CreditIQ</h3><div class="project-tag">Credit risk &amp; loan pre-eligibility system</div></div>
+      <div class="project-status">Live</div>
+    </div>
+    <div class="project-layout">
+      <div class="gallery" data-gallery="creditiq" aria-label="CreditIQ screenshots"></div>
+      <div class="project-copy">
+        <div class="project-row"><b>Problem —</b> loan applicants get rejected with no explanation of why.</div>
+        <div class="project-row"><b>Solution —</b> a full decision pipeline — pre-eligibility rules → ML risk scoring → risk banding → plain-English explanation — trained on 265,000+ Lending Club loans (2007–2018).</div>
+        <div class="project-row"><b>Result —</b> XGBoost, 0.743 ROC-AUC, 81.2% test accuracy. Every rejection is answered live by a Gemini-powered assistant.</div>
+
+        <div class="stack-row"><span>Python</span><span>XGBoost</span><span>Streamlit</span><span>Gemini AI</span></div>
+        <div class="project-links">
+          <button class="details-btn" data-project="creditiq">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            View Details
+          </button>
+          <a href="https://credit-risk-ml-system-sg.streamlit.app/" target="_blank" rel="noopener">Live Demo →</a>
+          <a href="https://github.com/shankargadyal/credit-risk-ml-system" target="_blank" rel="noopener">GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </article>
 </section>
 
 <!-- ============================================================
@@ -1109,110 +1026,6 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
     <article class="ach-card reveal"><div class="ach-icon" aria-hidden="true">⚡</div><div class="ach-title">RAG Applications</div><div class="ach-sub">Retrieval assistants inside two live products</div></article>
     <article class="ach-card reveal"><div class="ach-icon" aria-hidden="true">🧠</div><div class="ach-title">LLM Engineering</div><div class="ach-sub">Groq LLaMA 3.3 70B, Gemini, guardrails &amp; eval</div></article>
   </div>
-</section>
-
-<!-- ============================================================
-     PROJECTS
-     ============================================================ -->
-<section id="projects">
-  <h2 class="section-title">Case Studies</h2>
-  <h2 class="section-heading">Projects</h2>
-  <p class="section-note">Four systems taken from raw problem to deployed product. Each one includes the failure I found and how I fixed it — open <b>View Details</b> for architecture, metrics and full write-up.</p>
-
-  <!-- DataMind AI -->
-  <article class="project" id="p-datamind">
-    <div class="project-head">
-      <div><h3 class="project-title">DataMind AI</h3><div class="project-tag">Autonomous multi-agent analytics platform</div></div>
-      <div class="project-status personal">Personal Project</div>
-    </div>
-    <div class="project-row"><b>Problem —</b> most small businesses need data analysis but can't afford a data science team.</div>
-    <div class="project-row"><b>Solution —</b> a pipeline of specialized AI agents — Detective → Analyst → ML Engineer → Guardrails → Reporter — that investigates a dataset, builds models, and writes a full report autonomously.</div>
-    <div class="project-row"><b>Challenge —</b> audited the build against a 6-part framework for genuine agentic systems (RAG, Multi-Agent, Guardrails/Eval, LLMOps, Human-in-the-Loop, MCP/A2A) and found real gaps in four of them.</div>
-    <div class="project-row"><b>Solved —</b> added lightweight TF-IDF retrieval (avoiding a heavy install that would break free-tier hosting), a guardrails agent that checks the model's own confidence claims for consistency, full per-call latency/token logging, and a human-review gate before flagged results unlock.</div>
-
-    <div class="gallery" data-gallery="datamind" aria-label="DataMind AI screenshots"></div>
-
-    <div class="stack-row"><span>Flask</span><span>Groq LLaMA 3.3 70B</span><span>Scikit-Learn</span><span>SHAP</span><span>React</span></div>
-    <div class="project-links">
-      <button class="details-btn" data-project="datamind">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        View Details
-      </button>
-      <a href="https://datamind-ai-887682911552.asia-south1.run.app/" target="_blank" rel="noopener">Live Demo →</a>
-      <a href="https://github.com/shankargadyal/DataMind-AI" target="_blank" rel="noopener">GitHub →</a>
-    </div>
-  </article>
-
-  <!-- FinSight AI -->
-  <article class="project" id="p-finsight">
-    <div class="project-head">
-      <div><h3 class="project-title">FinSight AI</h3><div class="project-tag">Stock market forecasting platform — MSc capstone</div></div>
-      <div class="project-status">Live</div>
-    </div>
-    <div class="project-row"><b>Problem —</b> retail investors get black-box price predictions with no reasoning behind them.</div>
-    <div class="project-row"><b>Solution —</b> combines Linear Regression, ARIMA, LSTM and VADER sentiment analysis, with a risk analyzer, a prediction-confidence meter, and a RAG-powered financial assistant.</div>
-    <div class="project-row"><b>Challenge —</b> a senior-level code audit surfaced real production risk: a live database committed to a public repo and debug mode hardcoded on.</div>
-    <div class="project-row"><b>Solved —</b> removed the exposed database, disabled debug mode, corrected the documentation, then shipped a v3 rebuild with the RAG assistant. Deployed on Google Cloud Run (asia-south1).</div>
-
-    <div class="gallery" data-gallery="finsight" aria-label="FinSight AI screenshots"></div>
-
-    <div class="stack-row"><span>Flask</span><span>LSTM</span><span>ARIMA</span><span>VADER</span><span>RAG</span></div>
-    <div class="project-links">
-      <button class="details-btn" data-project="finsight">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        View Details
-      </button>
-      <a href="https://finsight-ai-887682911552.asia-south1.run.app" target="_blank" rel="noopener">Live Demo →</a>
-      <a href="https://github.com/shankargadyal/Finsight_AI" target="_blank" rel="noopener">GitHub →</a>
-    </div>
-  </article>
-
-  <!-- CustomerIQ -->
-  <article class="project" id="p-customeriq">
-    <div class="project-head">
-      <div><h3 class="project-title">CustomerIQ</h3><div class="project-tag">Customer intelligence: churn, segmentation, CLV</div></div>
-      <div class="project-status">Live</div>
-    </div>
-    <div class="project-row"><b>Problem —</b> businesses need to know which customers will leave before they do, and why.</div>
-    <div class="project-row"><b>Challenge —</b> the first churn model returned 100% accuracy — not a result, a red flag.</div>
-    <div class="project-row"><b>Solved —</b> traced it to data leakage from features correlated with the target, rebuilt the pipeline with proper train/test splits and cross-validation, then benchmarked six models.</div>
-    <div class="project-row"><b>Result —</b> Random Forest, 82.26% test accuracy, verified honestly — plus RFM segmentation and CLV estimation.</div>
-
-    <div class="gallery" data-gallery="customeriq" aria-label="CustomerIQ screenshots"></div>
-
-    <div class="stack-row"><span>Random Forest</span><span>XGBoost</span><span>Flask</span><span>Chart.js</span></div>
-    <div class="project-links">
-      <button class="details-btn" data-project="customeriq">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        View Details
-      </button>
-      <a href="https://coustomeriq.onrender.com" target="_blank" rel="noopener">Live Demo →</a>
-      <a href="https://github.com/shankargadyal/CustomerIQ" target="_blank" rel="noopener">GitHub →</a>
-    </div>
-  </article>
-
-  <!-- CreditIQ -->
-  <article class="project" id="p-creditiq">
-    <div class="project-head">
-      <div><h3 class="project-title">CreditIQ</h3><div class="project-tag">Credit risk &amp; loan pre-eligibility system</div></div>
-      <div class="project-status">Live</div>
-    </div>
-    <div class="project-row"><b>Problem —</b> loan applicants get rejected with no explanation of why.</div>
-    <div class="project-row"><b>Solution —</b> a full decision pipeline — pre-eligibility rules → ML risk scoring → risk banding → plain-English explanation — trained on 265,000+ Lending Club loans (2007–2018).</div>
-    <div class="project-row"><b>Result —</b> XGBoost, 0.743 ROC-AUC, 81.2% test accuracy. Every rejection is answered live by a Gemini-powered assistant.</div>
-
-    <div class="gallery" data-gallery="creditiq" aria-label="CreditIQ screenshots"></div>
-
-    <div class="stack-row"><span>Python</span><span>XGBoost</span><span>Streamlit</span><span>Gemini AI</span></div>
-    <div class="project-links">
-      <button class="details-btn" data-project="creditiq">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        View Details
-      </button>
-      <a href="https://lnkd.in/dnK8vKhP" target="_blank" rel="noopener">Live Demo →</a>
-      <a href="https://lnkd.in/dEuhkSsq" target="_blank" rel="noopener">GitHub →</a>
-    </div>
-  </article>
 </section>
 
 <!-- ============================================================
@@ -1470,7 +1283,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
    -------------------------------------------------------------------------- */
 const CONFIG = {
   githubUser: 'shankargadyal',
-  chatEndpoint: '/api/chat',   // Flask backend → Gemini. No keys in the browser.
+  chatEndpoint: '/api/chat',   // Flask proxies requests to Groq.
   chatTimeoutMs: 30000,
   historyTurns: 8
 };
@@ -1794,8 +1607,8 @@ const PROJECTS = {
       { v: '265k+', k: 'Loan records' }, { v: '3', k: 'Models compared' }
     ],
     future: 'Reject-inference to correct for applicants never funded, fairness testing across demographic slices, and SHAP-backed reason codes so every explanation is traceable to features.',
-    github: 'https://lnkd.in/dEuhkSsq',
-    demo: 'https://lnkd.in/dnK8vKhP'
+    github: 'https://github.com/shankargadyal/credit-risk-ml-system',
+    demo: 'https://credit-risk-ml-system-sg.streamlit.app/'
   }
 };
 
@@ -1803,31 +1616,8 @@ const PROJECTS = {
 const CERTIFICATES = [
   { name: 'Machine Learning for Python', issuer: 'Infosys Springboard', meta: 'Completed · Certificate ID pending', img: 'images/cert-infosys-ml.png' },
   { name: 'Natural Language Processing', issuer: 'Infosys Springboard', meta: 'Completed · Certificate ID pending', img: 'images/cert-infosys-nlp.png' },
-  { name: 'Generative AI Internship', issuer: 'Prodigy InfoTech', meta: 'August 2026 · Outstanding remarks', pdf: 'certificates/prodigy-genai.pdf' }
+  { name: 'Generative AI Internship', issuer: 'Prodigy InfoTech', meta: 'August 2026 · Outstanding remarks', img: 'images/cert-prodigy-genai.jpg' }
 ];
-
-/* Floating tech chips */
-const TECH = ['Python', 'Flask', 'TensorFlow', 'Pandas', 'Docker', 'Git', 'React', 'Gemini', 'Llama'];
-
-/* ----------------------------------------------------------------------------
-   3. BOOT — loading screen
-   -------------------------------------------------------------------------- */
-(function loader() {
-  const el = $('#loader');
-  const hide = () => {
-    el.classList.add('done');
-    document.body.classList.add('cursor-ready');
-    setTimeout(() => { el.style.display = 'none'; }, 700);
-  };
-  const minimum = prefersReducedMotion ? 200 : 900;
-  const start = performance.now();
-  window.addEventListener('load', () => {
-    const wait = Math.max(0, minimum - (performance.now() - start));
-    setTimeout(hide, wait);
-  });
-  // Safety net: never trap the visitor behind the loader.
-  setTimeout(hide, 4500);
-})();
 
 /* ----------------------------------------------------------------------------
    4. NAVIGATION — sticky state, scroll spy, mobile menu
@@ -1872,11 +1662,6 @@ const TECH = ['Python', 'Flask', 'TensorFlow', 'Pandas', 'Docker', 'Git', 'React
   window.addEventListener('resize', () => { if (window.innerWidth > 860) closeMenu(); });
 })();
 
-function scrollToId(id) {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
-}
-
 /* ----------------------------------------------------------------------------
    5. SCROLL PROGRESS BAR (rAF-throttled, transform-only)
    -------------------------------------------------------------------------- */
@@ -1893,93 +1678,6 @@ function scrollToId(id) {
     if (!ticking) { ticking = true; requestAnimationFrame(update); }
   }, { passive: true });
   update();
-})();
-
-/* ----------------------------------------------------------------------------
-   6. CURSOR GLOW — desktop pointers only
-   -------------------------------------------------------------------------- */
-(function cursorGlow() {
-  if (prefersReducedMotion) return;
-  if (!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
-
-  const glow = $('#cursor-glow');
-  const dot = $('#cursor-dot');
-  let tx = 0, ty = 0, gx = 0, gy = 0, raf = null;
-
-  const loop = () => {
-    gx += (tx - gx) * 0.12;
-    gy += (ty - gy) * 0.12;
-    glow.style.transform = 'translate3d(' + gx + 'px,' + gy + 'px,0)';
-    raf = requestAnimationFrame(loop);
-  };
-
-  window.addEventListener('mousemove', e => {
-    tx = e.clientX; ty = e.clientY;
-    dot.style.transform = 'translate3d(' + tx + 'px,' + ty + 'px,0)';
-    if (!raf) loop();
-  }, { passive: true });
-
-  document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; dot.style.opacity = '0'; });
-  document.addEventListener('mouseenter', () => { glow.style.opacity = ''; dot.style.opacity = ''; });
-
-  // Grow the dot over anything clickable (class-based, so the follow
-  // loop keeps sole ownership of the transform property)
-  document.addEventListener('mouseover', e => {
-    const interactive = e.target.closest('a, button, .gallery figure, .cert-thumb, input');
-    dot.classList.toggle('hot', !!interactive);
-  }, { passive: true });
-})();
-
-/* ----------------------------------------------------------------------------
-   7. FLOATING TECH ICONS
-   -------------------------------------------------------------------------- */
-(function techField() {
-  const field = $('#tech-field');
-  if (!field || prefersReducedMotion) return;
-  const spots = [
-    [6, 18], [88, 12], [12, 62], [92, 55], [4, 86],
-    [80, 82], [72, 26], [22, 38], [60, 70]
-  ];
-  TECH.forEach((label, i) => {
-    const chip = document.createElement('span');
-    chip.className = 'tech-chip';
-    chip.textContent = label;
-    const [left, top] = spots[i % spots.length];
-    chip.style.left = left + '%';
-    chip.style.top = top + '%';
-    chip.style.animationDuration = (9 + (i % 5) * 1.7) + 's';
-    chip.style.animationDelay = (i * 0.55) + 's';
-    field.appendChild(chip);
-  });
-})();
-
-/* ----------------------------------------------------------------------------
-   8. TYPEWRITER ROLE ROTATOR
-   -------------------------------------------------------------------------- */
-(function typewriter() {
-  const el = $('#role-rotator');
-  const roles = ['AI Engineer', 'Machine Learning Engineer', 'Data Scientist', 'Applied AI Developer'];
-  if (!el) return;
-
-  if (prefersReducedMotion) {
-    let i = 0;
-    setInterval(() => { i = (i + 1) % roles.length; el.textContent = roles[i]; }, 3200);
-    return;
-  }
-
-  let idx = 0, char = 0, deleting = false;
-  const tick = () => {
-    const word = roles[idx];
-    char += deleting ? -1 : 1;
-    el.textContent = word.slice(0, char);
-
-    let delay = deleting ? 34 : 62;
-    if (!deleting && char === word.length) { delay = 1700; deleting = true; }
-    else if (deleting && char === 0) { deleting = false; idx = (idx + 1) % roles.length; delay = 260; }
-    setTimeout(tick, delay);
-  };
-  el.textContent = '';
-  setTimeout(tick, 700);
 })();
 
 /* ----------------------------------------------------------------------------
@@ -2356,7 +2054,7 @@ function showToast(message) {
 /* ============================================================================
    16. NOVA — AI assistant client
    The browser never talks to a model provider directly. It calls the Flask
-   backend (POST /api/chat), which holds the Gemini key server-side.
+   backend (POST /api/chat), which holds the Groq key server-side.
    ========================================================================== */
 const Nova = (function () {
   const panel = $('#nova-panel');
