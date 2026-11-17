@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#050914">
+<meta name="theme-color" content="#050505">
 
 <title>Shankar Gadyal — AI Engineer &amp; Machine Learning Engineer</title>
 <meta name="description" content="Shankar Gadyal is an AI Engineer and MSc Data Science student in Bengaluru building and shipping production AI systems: multi-agent analytics, RAG assistants, credit risk models and time-series forecasting.">
@@ -67,15 +67,15 @@
    1. DESIGN TOKENS
    ============================================================ */
 :root{
-  --bg:#050914;
-  --surface:#0B1628;
-  --surface-2:#112039;
-  --border:#263754;
-  --text:#F5F8FF;
-  --muted:#a8b7cc;
-  --accent:#477DFF;
-  --accent-2:#a3bdff;
-  --teal:#70F5ED;
+  --bg:#050505;
+  --surface:#111111;
+  --surface-2:#1b1b1b;
+  --border:#343434;
+  --text:#f5f5f5;
+  --muted:#b8b8b8;
+  --accent:#ababab;
+  --accent-2:#d2d2d2;
+  --highlight:#ededed;
 
   --radius-sm:8px;
   --radius:12px;
@@ -127,7 +127,7 @@ a{color:inherit; text-decoration:none;}
 img{max-width:100%; display:block;}
 button{font-family:inherit;}
 .mono{font-family:'JetBrains Mono', monospace;}
-::selection{background:var(--accent); color:#fff;}
+::selection{background:var(--highlight); color:var(--bg);}
 :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px;}
 .sr-only{
   position:absolute; width:1px; height:1px; padding:0; margin:-1px;
@@ -142,7 +142,7 @@ button{font-family:inherit;}
 
 #scroll-progress{
   position:fixed; inset:0 0 auto; height:2px; z-index:210;
-  background:var(--teal); pointer-events:none; transform:scaleX(0); transform-origin:left;
+  background:var(--highlight); pointer-events:none; transform:scaleX(0); transform-origin:left;
 }
 
 /* ============================================================
@@ -152,18 +152,18 @@ nav{
   position:fixed; top:0; left:0; right:0; z-index:200;
   display:flex; align-items:center; justify-content:space-between;
   padding:14px 40px; min-height:var(--nav-h);
-  background:rgba(10,10,13,0.72);
+  background:rgba(8,8,8,0.72);
   backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid var(--border);
   transition:background .25s var(--ease), border-color .25s var(--ease);
 }
-nav.scrolled{ background:rgba(10,10,13,0.9); }
+nav.scrolled{ background:rgba(8,8,8,0.9); }
 .logo{font-weight:700; font-size:15px; letter-spacing:-0.01em; display:flex; align-items:center; gap:9px;}
 .logo span{color:var(--accent);}
 .logo .logo-dot{
   width:9px; height:9px; border-radius:3px;
-  background:linear-gradient(135deg, var(--accent), var(--teal));
-  box-shadow:0 0 10px rgba(108,99,255,.6);
+  background:linear-gradient(135deg, var(--accent), var(--highlight));
+  box-shadow:0 0 10px rgba(235,235,235,.6);
 }
 .nav-links{display:flex; gap:28px; font-size:14px; color:var(--muted);}
 .nav-links a{transition:color .15s var(--ease); position:relative; padding:4px 0;}
@@ -182,7 +182,7 @@ nav.scrolled{ background:rgba(10,10,13,0.9); }
   padding:8px 14px; border-radius:var(--radius-sm);
   transition:border-color .15s var(--ease), background .15s var(--ease);
 }
-.nav-resume:hover{background:var(--surface-2); border-color:#3a3a44;}
+.nav-resume:hover{background:var(--surface-2); border-color:#444444;}
 .nav-resume svg{width:14px; height:14px;}
 .nav-cta{
   background:var(--accent); color:#fff; font-size:13.5px; font-weight:600;
@@ -202,7 +202,7 @@ nav.scrolled{ background:rgba(10,10,13,0.9); }
 
 #mobile-menu{
   position:fixed; top:var(--nav-h); left:0; right:0; z-index:199;
-  background:rgba(10,10,13,0.97); backdrop-filter:blur(16px);
+  background:rgba(8,8,8,0.97); backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border);
   display:none; flex-direction:column; padding:12px 24px 22px;
 }
@@ -244,7 +244,7 @@ h2.section-heading{
 .btn-primary{ background:var(--accent); color:#fff; border-color:var(--accent); }
 .btn-primary:hover{ background:var(--accent-2); transform:translateY(-1px); }
 .btn-ghost{ background:var(--surface); color:var(--text); }
-.btn-ghost:hover{ background:var(--surface-2); border-color:#3a3a44; transform:translateY(-1px); }
+.btn-ghost:hover{ background:var(--surface-2); border-color:#444444; transform:translateY(-1px); }
 
 /* Scroll reveal utility */
 .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s var(--ease-out-expo), transform .6s var(--ease-out-expo); }
@@ -266,7 +266,7 @@ h2.section-heading{
   padding:20px 16px; text-align:center;
   transition:border-color .2s var(--ease), transform .2s var(--ease);
 }
-.stat-card:hover{ border-color:#3a3a44; transform:translateY(-2px); }
+.stat-card:hover{ border-color:#444444; transform:translateY(-2px); }
 .stat-num{
   font-family:'JetBrains Mono', monospace;
   font-size:1.65rem; font-weight:600; letter-spacing:-0.02em;
@@ -289,10 +289,10 @@ h2.section-heading{
 }
 .ach-card::before{
   content:''; position:absolute; inset:0;
-  background:linear-gradient(135deg, rgba(108,99,255,.10), transparent 55%);
+  background:linear-gradient(135deg, rgba(235,235,235,.10), transparent 55%);
   opacity:0; transition:opacity .25s var(--ease);
 }
-.ach-card:hover{ transform:translateY(-3px); border-color:#3a3a44; }
+.ach-card:hover{ transform:translateY(-3px); border-color:#444444; }
 .ach-card:hover::before{opacity:1;}
 .ach-icon{ font-size:20px; line-height:1; margin-bottom:10px; position:relative; }
 .ach-title{ font-size:.95rem; font-weight:600; letter-spacing:-0.01em; position:relative; }
@@ -308,17 +308,17 @@ h2.section-heading{
   transition:opacity .55s var(--ease-out-expo), transform .55s var(--ease-out-expo), border-color .2s var(--ease);
 }
 .project.in-view{ opacity:1; transform:translateY(0); }
-.project:hover{ border-color:#33333d; }
+.project:hover{ border-color:#393939; }
 .project-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:14px;}
 .project-title{ font-size:1.3rem; font-weight:700; margin-bottom:4px; letter-spacing:-0.02em; }
 .project-tag{ font-size:0.85rem; color:var(--accent-2); }
 .project-status{
-  font-size:11.5px; font-weight:600; color:var(--teal);
-  border:1px solid rgba(47,214,176,0.35); background:rgba(47,214,176,0.08);
+  font-size:11.5px; font-weight:600; color:var(--highlight);
+  border:1px solid rgba(235,235,235,0.35); background:rgba(235,235,235,0.08);
   padding:4px 10px; border-radius:20px; white-space:nowrap; height:fit-content;
 }
-.project-status.personal{ color:var(--accent-2); border-color:rgba(139,127,255,.35); background:rgba(108,99,255,.09); }
-.project-row{ margin:12px 0; font-size:0.95rem; color:#d6d5db; }
+.project-status.personal{ color:var(--accent-2); border-color:rgba(235,235,235,.35); background:rgba(235,235,235,.09); }
+.project-row{ margin:12px 0; font-size:0.95rem; color:#d6d6d6; }
 .project-row b{ color:var(--text); font-weight:600; }
 .stack-row{ display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 14px; }
 .stack-row span{
@@ -335,7 +335,7 @@ h2.section-heading{
   display:inline-flex; align-items:center; gap:7px;
   transition:border-color .15s var(--ease), background .15s var(--ease), transform .15s var(--ease);
 }
-.details-btn:hover{ border-color:var(--accent); background:rgba(108,99,255,.12); transform:translateY(-1px); }
+.details-btn:hover{ border-color:var(--accent); background:rgba(235,235,235,.12); transform:translateY(-1px); }
 .details-btn svg{width:14px; height:14px;}
 
 /* Project gallery */
@@ -353,14 +353,14 @@ h2.section-heading{
 .gallery figure:hover img{ transform:scale(1.05); filter:none; }
 .gallery figcaption{
   position:absolute; left:0; right:0; bottom:0;
-  padding:22px 12px 9px; font-size:11.5px; color:#e7e6ec;
-  background:linear-gradient(to top, rgba(10,10,13,.92), transparent);
+  padding:22px 12px 9px; font-size:11.5px; color:#e7e7e7;
+  background:linear-gradient(to top, rgba(8,8,8,.92), transparent);
   opacity:0; transform:translateY(6px); transition:opacity .25s var(--ease), transform .25s var(--ease);
 }
 .gallery figure:hover figcaption, .gallery figure:focus-visible figcaption{ opacity:1; transform:none; }
 .gallery .zoom-hint{
   position:absolute; top:8px; right:8px; width:24px; height:24px; border-radius:6px;
-  background:rgba(10,10,13,.72); border:1px solid var(--border);
+  background:rgba(8,8,8,.72); border:1px solid var(--border);
   display:grid; place-items:center; opacity:0; transition:opacity .25s var(--ease);
 }
 .gallery figure:hover .zoom-hint{opacity:1;}
@@ -372,7 +372,7 @@ h2.section-heading{
 .timeline{ position:relative; padding-left:26px; }
 .timeline::before{
   content:''; position:absolute; left:6px; top:6px; bottom:6px; width:1px;
-  background:linear-gradient(to bottom, var(--accent), rgba(47,214,176,.45), transparent);
+  background:linear-gradient(to bottom, var(--accent), rgba(235,235,235,.45), transparent);
 }
 .tl-item{ position:relative; padding-bottom:30px; }
 .tl-item:last-child{padding-bottom:0;}
@@ -380,7 +380,7 @@ h2.section-heading{
   content:''; position:absolute; left:-26px; top:6px; width:13px; height:13px; border-radius:50%;
   background:var(--bg); border:2px solid var(--accent);
 }
-.tl-item.teal::before{ border-color:var(--teal); }
+.tl-item.highlight::before{ border-color:var(--highlight); }
 .tl-item.muted::before{ border-color:var(--border); }
 .tl-date{
   font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--muted);
@@ -405,7 +405,7 @@ h2.section-heading{
   background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
   overflow:hidden; transition:transform .22s var(--ease), border-color .22s var(--ease);
 }
-.cert-card:hover{ transform:translateY(-3px); border-color:#3a3a44; }
+.cert-card:hover{ transform:translateY(-3px); border-color:#444444; }
 .cert-thumb{ aspect-ratio:16/11; background:var(--surface-2); overflow:hidden; cursor:zoom-in; position:relative; }
 .cert-thumb img{ width:100%; height:100%; object-fit:cover; transition:transform .4s var(--ease); }
 .cert-card:hover .cert-thumb img{ transform:scale(1.04); }
@@ -423,9 +423,9 @@ h2.section-heading{
   background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px;
   transition:border-color .2s var(--ease), transform .2s var(--ease);
 }
-.skill-card:hover{ border-color:#3a3a44; transform:translateY(-2px); }
+.skill-card:hover{ border-color:#444444; transform:translateY(-2px); }
 .skill-card h3{ font-size:13px; font-weight:600; color:var(--accent-2); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px; }
-.skill-card ul{ list-style:none; color:#d6d5db; font-size:0.93rem; }
+.skill-card ul{ list-style:none; color:#d6d6d6; font-size:0.93rem; }
 .skill-card li{ padding:2px 0; }
 
 /* ============================================================
@@ -471,7 +471,7 @@ h2.section-heading{
 /* ============================================================
    17. FOOTER
    ============================================================ */
-footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,19,23,.4); }
+footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(18,18,18,.4); }
 .footer-inner{
   max-width:920px; margin:0 auto; padding:48px 32px 34px;
   display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:36px;
@@ -480,14 +480,14 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
 .footer-brand .logo{margin-bottom:10px;}
 .footer-brand p{ font-size:.88rem; color:var(--muted); max-width:280px; }
 .footer-col h4{ font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-bottom:12px; font-weight:600; }
-.footer-col a{ display:block; font-size:.9rem; color:#d6d5db; padding:4px 0; transition:color .15s var(--ease); }
+.footer-col a{ display:block; font-size:.9rem; color:#d6d6d6; padding:4px 0; transition:color .15s var(--ease); }
 .footer-col a:hover{ color:var(--accent-2); }
 .footer-social{ display:flex; gap:10px; margin-top:14px; }
 .footer-social a{
   width:36px; height:36px; border-radius:9px; border:1px solid var(--border); background:var(--surface);
   display:grid; place-items:center; transition:all .18s var(--ease);
 }
-.footer-social a:hover{ border-color:var(--accent); background:rgba(108,99,255,.12); transform:translateY(-2px); }
+.footer-social a:hover{ border-color:var(--accent); background:rgba(235,235,235,.12); transform:translateY(-2px); }
 .footer-social svg{ width:16px; height:16px; fill:var(--muted); transition:fill .18s var(--ease); }
 .footer-social a:hover svg{ fill:var(--text); }
 .footer-bottom{
@@ -512,7 +512,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
 #lightbox{
   position:fixed; inset:0; z-index:600; display:none;
   align-items:center; justify-content:center;
-  background:rgba(6,6,9,.86);
+  background:rgba(6,6,6,.86);
   backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
   padding:64px 20px;
 }
@@ -530,7 +530,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
 .lb-btn{
   position:absolute; top:50%; transform:translateY(-50%);
   width:46px; height:46px; border-radius:50%;
-  background:rgba(19,19,23,.86); border:1px solid var(--border); color:var(--text);
+  background:rgba(18,18,18,.86); border:1px solid var(--border); color:var(--text);
   cursor:pointer; display:grid; place-items:center;
   transition:all .18s var(--ease);
 }
@@ -542,18 +542,18 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
 #lb-close{
   position:absolute; top:18px; right:18px; z-index:2;
   width:42px; height:42px; border-radius:50%;
-  background:rgba(19,19,23,.86); border:1px solid var(--border); color:var(--text);
+  background:rgba(18,18,18,.86); border:1px solid var(--border); color:var(--text);
   cursor:pointer; display:grid; place-items:center; font-size:18px; line-height:1;
   transition:all .18s var(--ease);
 }
-#lb-close:hover{ background:#2a2a33; border-color:#3a3a44; transform:rotate(90deg); }
+#lb-close:hover{ background:#303030; border-color:#444444; transform:rotate(90deg); }
 
 /* ============================================================
    19. PROJECT DETAILS MODAL
    ============================================================ */
 #modal{
   position:fixed; inset:0; z-index:550; display:none;
-  background:rgba(6,6,9,.78); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  background:rgba(6,6,6,.78); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
   padding:0;
 }
 #modal.open{ display:block; animation:fade-in .22s var(--ease); }
@@ -568,7 +568,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
   position:sticky; top:0; z-index:3;
   display:flex; align-items:flex-start; gap:16px; justify-content:space-between;
   padding:22px 30px 18px;
-  background:rgba(10,10,13,.93); backdrop-filter:blur(12px);
+  background:rgba(8,8,8,.93); backdrop-filter:blur(12px);
   border-bottom:1px solid var(--border);
 }
 .modal-top h3{ font-size:1.35rem; font-weight:700; letter-spacing:-0.02em; }
@@ -587,7 +587,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
   font-size:11.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
   color:var(--muted); margin-bottom:9px;
 }
-.m-block p, .m-block li{ font-size:.95rem; color:#d6d5db; }
+.m-block p, .m-block li{ font-size:.95rem; color:#d6d6d6; }
 .m-block ul{ list-style:none; }
 .m-block li{ position:relative; padding:4px 0 4px 18px; }
 .m-block li::before{ content:'▸'; position:absolute; left:0; color:var(--accent); font-size:11px; top:6px; }
@@ -597,7 +597,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
   background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm);
   padding:14px 12px; text-align:center;
 }
-.metric .v{ font-family:'JetBrains Mono', monospace; font-size:1.15rem; font-weight:600; color:var(--teal); }
+.metric .v{ font-family:'JetBrains Mono', monospace; font-size:1.15rem; font-weight:600; color:var(--highlight); }
 .metric .k{ font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-top:5px; }
 .arch-wrap{
   background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
@@ -612,9 +612,9 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
 #nova-orb{
   position:fixed; bottom:26px; right:26px; z-index:300;
   width:56px; height:56px; border-radius:50%;
-  background:linear-gradient(135deg, var(--accent), var(--teal));
+  background:linear-gradient(135deg, var(--accent), var(--highlight));
   display:flex; align-items:center; justify-content:center;
-  cursor:pointer; box-shadow:0 6px 24px rgba(108,99,255,0.4);
+  cursor:pointer; box-shadow:0 6px 24px rgba(235,235,235,0.4);
   border:none;
   animation:orb-breathe 3s ease-in-out infinite;
   transition:transform .2s var(--ease);
@@ -636,7 +636,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
   padding:13px 15px; border-bottom:1px solid var(--border);
   display:flex; align-items:center; gap:10px;
 }
-.nova-header .dot{ width:8px; height:8px; border-radius:50%; background:var(--teal); box-shadow:0 0 8px var(--teal); }
+.nova-header .dot{ width:8px; height:8px; border-radius:50%; background:var(--highlight); box-shadow:0 0 8px var(--highlight); }
 .nova-header b{ font-size:14px; }
 .nova-header .sub{ font-size:11.5px; color:var(--muted); }
 .nova-head-actions{ margin-left:auto; display:flex; gap:4px; }
@@ -663,7 +663,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
 .nova-msg li{margin:2px 0;}
 .nova-msg code{
   font-family:'JetBrains Mono', monospace; font-size:11.5px;
-  background:rgba(108,99,255,.16); padding:1.5px 5px; border-radius:4px;
+  background:rgba(235,235,235,.16); padding:1.5px 5px; border-radius:4px;
 }
 .nova-msg pre{
   background:var(--bg); border:1px solid var(--border); border-radius:8px;
@@ -703,7 +703,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
   padding:5px 10px; border-radius:14px; cursor:pointer; background:none;
   transition:all .15s var(--ease);
 }
-.nova-chip:hover{ color:var(--text); border-color:var(--accent); background:rgba(108,99,255,.1); }
+.nova-chip:hover{ color:var(--text); border-color:var(--accent); background:rgba(235,235,235,.1); }
 .nova-input-row{ display:flex; gap:8px; padding:12px; border-top:1px solid var(--border); }
 #nova-input{
   flex:1; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-sm);
@@ -1043,28 +1043,28 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
       <div class="tl-desc">Advanced machine learning, deep learning and applied statistics. FinSight AI is the capstone build.</div>
     </div>
 
-    <div class="tl-item teal reveal">
+    <div class="tl-item highlight reveal">
       <div class="tl-date">2025 · shipped</div>
       <div class="tl-title">DataMind AI — multi-agent analytics platform <span class="tl-kind">Project</span></div>
       <div class="tl-org">Personal · Groq LLaMA 3.3 70B, Flask, React</div>
       <div class="tl-desc">Built a 5-agent autonomous pipeline, then audited it against a 6-category agentic AI framework and closed every gap it exposed.</div>
     </div>
 
-    <div class="tl-item teal reveal">
+    <div class="tl-item highlight reveal">
       <div class="tl-date">2025 · deployed on Cloud Run</div>
       <div class="tl-title">FinSight AI — forecasting &amp; financial intelligence <span class="tl-kind">Project</span></div>
       <div class="tl-org">MSc capstone · LSTM, ARIMA, VADER, RAG</div>
       <div class="tl-desc">Found an exposed production database and debug mode left on during a self-audit; fixed both, then shipped a v3 rebuild with a RAG assistant.</div>
     </div>
 
-    <div class="tl-item teal reveal">
+    <div class="tl-item highlight reveal">
       <div class="tl-date">2024 · deployed</div>
       <div class="tl-title">CustomerIQ &amp; CreditIQ <span class="tl-kind">Project</span></div>
       <div class="tl-org">Independent · Random Forest, XGBoost, Gemini API</div>
       <div class="tl-desc">Churn, RFM segmentation and CLV in one dashboard; a full credit decision pipeline trained on 265,000+ loan records in the other.</div>
     </div>
 
-    <div class="tl-item teal reveal">
+    <div class="tl-item highlight reveal">
       <div class="tl-date">Aug 2026 · completed</div>
       <div class="tl-title">Generative AI Intern <span class="tl-kind">Internship</span></div>
       <div class="tl-org">Prodigy InfoTech · 1 month · Outstanding remarks</div>
@@ -1237,7 +1237,7 @@ footer{ border-top:1px solid var(--border); margin-top:40px; background:rgba(19,
      NOVA ASSISTANT
      ============================================================ -->
 <button id="nova-orb" onclick="toggleNova()" aria-label="Open NOVA AI guide" aria-expanded="false" aria-controls="nova-panel">
-  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
 </button>
 
 <div id="nova-panel" role="dialog" aria-label="NOVA AI assistant">
@@ -1300,20 +1300,20 @@ const SVG = {
   defs: `
     <defs>
       <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-        <path d="M0 0 L10 5 L0 10 z" fill="#6c63ff"/>
+        <path d="M0 0 L10 5 L0 10 z" fill="#ababab"/>
       </marker>
       <marker id="arw-t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-        <path d="M0 0 L10 5 L0 10 z" fill="#2fd6b0"/>
+        <path d="M0 0 L10 5 L0 10 z" fill="#ededed"/>
       </marker>
     </defs>`,
 
-  /** Rounded node with a title and optional sub-label. tone: base | accent | teal | ghost */
+  /** Rounded node with a title and optional sub-label. tone: base | accent | highlight | ghost */
   box(x, y, w, h, title, sub, tone) {
     const tones = {
-      base:   { fill: '#1a1a1f', stroke: '#26262d', text: '#f2f1f5' },
-      accent: { fill: 'rgba(108,99,255,0.14)', stroke: '#6c63ff', text: '#f2f1f5' },
-      teal:   { fill: 'rgba(47,214,176,0.12)', stroke: '#2fd6b0', text: '#f2f1f5' },
-      ghost:  { fill: 'transparent', stroke: '#33333d', text: '#9a99a6' }
+      base:   { fill: '#1b1b1b', stroke: '#343434', text: '#f5f5f5' },
+      accent: { fill: 'rgba(235,235,235,0.14)', stroke: '#ababab', text: '#f5f5f5' },
+      highlight:   { fill: 'rgba(235,235,235,0.12)', stroke: '#ededed', text: '#f5f5f5' },
+      ghost:  { fill: 'transparent', stroke: '#393939', text: '#b8b8b8' }
     };
     const t = tones[tone || 'base'];
     const cx = x + w / 2;
@@ -1321,16 +1321,16 @@ const SVG = {
     return `
       <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${t.fill}" stroke="${t.stroke}"/>
       <text x="${cx}" y="${titleY}" text-anchor="middle" fill="${t.text}" font-size="12.5" font-weight="600" font-family="Inter, sans-serif">${title}</text>
-      ${sub ? `<text x="${cx}" y="${y + h / 2 + 15}" text-anchor="middle" fill="#9a99a6" font-size="10.5" font-family="JetBrains Mono, monospace">${sub}</text>` : ''}`;
+      ${sub ? `<text x="${cx}" y="${y + h / 2 + 15}" text-anchor="middle" fill="#b8b8b8" font-size="10.5" font-family="JetBrains Mono, monospace">${sub}</text>` : ''}`;
   },
 
-  /** Straight connector. opts: {dashed, teal, label} */
+  /** Straight connector. opts: {dashed, highlight, label} */
   line(x1, y1, x2, y2, opts) {
     const o = opts || {};
-    const color = o.teal ? '#2fd6b0' : '#6c63ff';
-    const marker = o.teal ? 'arw-t' : 'arw';
+    const color = o.highlight ? '#ededed' : '#ababab';
+    const marker = o.highlight ? 'arw-t' : 'arw';
     const label = o.label
-      ? `<text x="${(x1 + x2) / 2}" y="${(y1 + y2) / 2 - 7}" text-anchor="middle" fill="#9a99a6" font-size="10" font-family="JetBrains Mono, monospace">${o.label}</text>`
+      ? `<text x="${(x1 + x2) / 2}" y="${(y1 + y2) / 2 - 7}" text-anchor="middle" fill="#b8b8b8" font-size="10" font-family="JetBrains Mono, monospace">${o.label}</text>`
       : '';
     return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="1.5"
       ${o.dashed ? 'stroke-dasharray="5 4"' : ''} marker-end="url(#${marker})" opacity="${o.dashed ? .7 : 1}"/>${label}`;
@@ -1339,15 +1339,15 @@ const SVG = {
   /** Elbow connector: horizontal, then vertical, then horizontal. */
   elbow(x1, y1, x2, y2, opts) {
     const o = opts || {};
-    const color = o.teal ? '#2fd6b0' : '#6c63ff';
-    const marker = o.teal ? 'arw-t' : 'arw';
+    const color = o.highlight ? '#ededed' : '#ababab';
+    const marker = o.highlight ? 'arw-t' : 'arw';
     const midX = o.midX || (x1 + x2) / 2;
     return `<path d="M${x1} ${y1} H${midX} V${y2} H${x2}" fill="none" stroke="${color}" stroke-width="1.5"
       ${o.dashed ? 'stroke-dasharray="5 4"' : ''} marker-end="url(#${marker})" opacity="${o.dashed ? .7 : 1}"/>`;
   },
 
   caption(x, y, text) {
-    return `<text x="${x}" y="${y}" fill="#9a99a6" font-size="10.5" font-family="JetBrains Mono, monospace" letter-spacing="0.06em">${text}</text>`;
+    return `<text x="${x}" y="${y}" fill="#b8b8b8" font-size="10.5" font-family="JetBrains Mono, monospace" letter-spacing="0.06em">${text}</text>`;
   },
 
   wrap(h, inner) {
@@ -1371,23 +1371,23 @@ function archDataMind() {
   s += SVG.box(16, 36, 200, 42, 'Raw dataset upload', 'CSV / tabular', 'ghost');
   s += SVG.line(116, 78, 116, 114);
 
-  agents.forEach((a, i) => { s += SVG.box(xs[i], y, w, h, a[0], a[1], i === 3 ? 'teal' : 'accent'); });
+  agents.forEach((a, i) => { s += SVG.box(xs[i], y, w, h, a[0], a[1], i === 3 ? 'highlight' : 'accent'); });
   for (let i = 0; i < 4; i++) s += SVG.line(xs[i] + w, y + h / 2, xs[i + 1] - 4, y + h / 2);
 
   // Feedback loop routed above the row: failed evaluation sends work back to training
-  s += `<path d="M497 116 V96 H357 V114" fill="none" stroke="#2fd6b0" stroke-width="1.5"
+  s += `<path d="M497 116 V96 H357 V114" fill="none" stroke="#ededed" stroke-width="1.5"
         stroke-dasharray="5 4" marker-end="url(#arw-t)" opacity=".75"/>`;
-  s += `<text x="427" y="89" text-anchor="middle" fill="#9a99a6" font-size="10"
+  s += `<text x="427" y="89" text-anchor="middle" fill="#b8b8b8" font-size="10"
         font-family="JetBrains Mono, monospace">retrain on failed eval</text>`;
 
   // Bracket: three capabilities that wrap the whole pipeline
-  s += `<path d="M357 176 V206 M116 206 H590" fill="none" stroke="#6c63ff" stroke-width="1.5" opacity=".85"/>`;
+  s += `<path d="M357 176 V206 M116 206 H590" fill="none" stroke="#ababab" stroke-width="1.5" opacity=".85"/>`;
   s += SVG.line(116, 206, 116, 244);
   s += SVG.line(357, 206, 357, 244);
   s += SVG.line(590, 206, 590, 244);
 
   s += SVG.box(16, 246, 200, 50, 'TF-IDF RAG chat', 'grounded Q&amp;A on results');
-  s += SVG.box(257, 246, 200, 50, 'Human-in-the-loop', 'review gate before unlock', 'teal');
+  s += SVG.box(257, 246, 200, 50, 'Human-in-the-loop', 'review gate before unlock', 'highlight');
   s += SVG.box(476, 246, 228, 50, 'LLMOps logging', 'latency · tokens · cost per call');
   return SVG.wrap(312, s);
 }
@@ -1406,15 +1406,15 @@ function archFinSight() {
   s += SVG.box(mx, 30, mw, 46, 'Linear Regression', 'baseline', 'accent');
   s += SVG.box(mx, 88, mw, 46, 'ARIMA', 'trend + seasonality', 'accent');
   s += SVG.box(mx, 146, mw, 46, 'LSTM', 'sequence model', 'accent');
-  s += SVG.box(mx, 204, mw, 46, 'VADER sentiment', 'headline polarity', 'teal');
+  s += SVG.box(mx, 204, mw, 46, 'VADER sentiment', 'headline polarity', 'highlight');
 
   [53, 111, 169].forEach(cy => { s += SVG.line(166, 85, mx - 4, cy); });
-  s += SVG.line(166, 155, mx - 4, 227, { teal: true });
+  s += SVG.line(166, 155, mx - 4, 227, { highlight: true });
 
   // Ensemble + outputs
   s += SVG.box(444, 88, 132, 104, 'Ensemble +', 'risk analyzer', 'accent');
   [53, 111, 169].forEach(cy => { s += SVG.line(mx + mw, cy, 440, 140); });
-  s += SVG.line(mx + mw, 227, 440, 150, { teal: true, dashed: true });
+  s += SVG.line(mx + mw, 227, 440, 150, { highlight: true, dashed: true });
 
   s += SVG.box(606, 46, 98, 62, 'Forecast UI', 'charts');
   s += SVG.box(606, 122, 98, 62, 'Confidence', 'meter');
@@ -1422,8 +1422,8 @@ function archFinSight() {
   s += SVG.line(576, 158, 602, 154);
 
   // RAG row, fed from the knowledge base with no crossings
-  s += SVG.box(mx, 268, 478, 46, 'RAG financial assistant', 'answers grounded in retrieved context', 'teal');
-  s += SVG.line(166, 291, mx - 4, 291, { teal: true });
+  s += SVG.box(mx, 268, 478, 46, 'RAG financial assistant', 'answers grounded in retrieved context', 'highlight');
+  s += SVG.line(166, 291, mx - 4, 291, { highlight: true });
 
   s += SVG.caption(16, 340, 'DEPLOYED · GOOGLE CLOUD RUN (ASIA-SOUTH1) · DEBUG OFF · SECRETS HELD IN ENV');
   return SVG.wrap(352, s);
@@ -1434,15 +1434,15 @@ function archCustomerIQ() {
   const y = 96, h = 58;
   let s = SVG.caption(16, 24, 'LEAKAGE-AUDITED CHURN + SEGMENTATION PIPELINE');
   s += SVG.box(16, y, 130, h, 'Transactions', 'raw customer log', 'ghost');
-  s += SVG.box(176, y, 150, h, 'Leakage audit', 'drop target-linked cols', 'teal');
+  s += SVG.box(176, y, 150, h, 'Leakage audit', 'drop target-linked cols', 'highlight');
   s += SVG.box(356, y, 150, h, '6-model benchmark', 'CV + train/test split', 'accent');
   s += SVG.box(536, y, 168, h, 'Random Forest', 'selected · 82.26% acc', 'accent');
   s += SVG.line(146, y + h / 2, 172, y + h / 2);
-  s += SVG.line(326, y + h / 2, 352, y + h / 2, { teal: true });
+  s += SVG.line(326, y + h / 2, 352, y + h / 2, { highlight: true });
   s += SVG.line(506, y + h / 2, 532, y + h / 2);
 
-  s += SVG.box(16, 40, 130, 34, '100% accuracy', 'red flag caught', 'teal');
-  s += SVG.line(146, 57, 246, 92, { teal: true, dashed: true });
+  s += SVG.box(16, 40, 130, 34, '100% accuracy', 'red flag caught', 'highlight');
+  s += SVG.line(146, 57, 246, 92, { highlight: true, dashed: true });
 
   s += SVG.box(176, 208, 150, 52, 'RFM segmentation', 'recency/frequency/value');
   s += SVG.box(356, 208, 150, 52, 'CLV estimation', 'lifetime value');
@@ -1468,8 +1468,8 @@ function archCreditIQ() {
   s += SVG.box(16, 40, 140, 34, '265k+ loan records', '2007–2018 Lending Club', 'ghost');
   s += SVG.line(86, 74, 86, 98);
 
-  s += SVG.box(356, 214, 150, 52, 'Approved path', 'offer + terms', 'teal');
-  s += SVG.box(536, 214, 168, 52, 'Gemini explainer', 'why it was declined', 'teal');
+  s += SVG.box(356, 214, 150, 52, 'Approved path', 'offer + terms', 'highlight');
+  s += SVG.box(536, 214, 168, 52, 'Gemini explainer', 'why it was declined', 'highlight');
   s += SVG.elbow(620, y + h, 431, 212, { midX: 431 });   // approved branch
   s += SVG.elbow(620, y + h, 620, 212, {});              // declined branch
   s += SVG.box(16, 214, 300, 52, 'Analytics dashboard', 'default rate by grade · purpose · band');
