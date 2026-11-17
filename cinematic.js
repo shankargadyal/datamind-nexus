@@ -86,6 +86,51 @@
     motion.addEventListener('change', reset);
   }
 
+  function enableScrollDepth() {
+    const panels = [...document.querySelectorAll('.portrait-frame, .project .gallery[data-gallery]')];
+    let frame = 0;
+    let listeners;
+
+    function update() {
+      frame = 0;
+      const viewportHeight = window.innerHeight;
+      // Measure the stationary frames before changing any of their children.
+      const depth = panels.map(panel => {
+        const { top, height } = panel.getBoundingClientRect();
+        const position = (viewportHeight - height - 2 * top) / (viewportHeight + height);
+        return Math.max(-1, Math.min(1, position)).toFixed(3);
+      });
+      panels.forEach((panel, index) => {
+        if (panel.style.getPropertyValue('--scroll-depth') !== depth[index]) {
+          panel.style.setProperty('--scroll-depth', depth[index]);
+        }
+      });
+    }
+
+    function schedule() {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    }
+
+    function syncMotion() {
+      listeners?.abort();
+      window.cancelAnimationFrame(frame);
+      frame = 0;
+      document.documentElement.classList.toggle('scroll-depth-enabled', !motion.matches);
+      if (motion.matches) return;
+
+      listeners = new AbortController();
+      const options = { passive: true, signal: listeners.signal };
+      window.addEventListener('scroll', schedule, options);
+      window.addEventListener('resize', schedule, options);
+      window.addEventListener('pageshow', schedule, options);
+      schedule();
+    }
+
+    motion.addEventListener('change', syncMotion);
+    syncMotion();
+  }
+
   playIntro();
   enablePortraitDepth();
+  enableScrollDepth();
 })();

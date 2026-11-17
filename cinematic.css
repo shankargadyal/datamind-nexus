@@ -147,6 +147,49 @@ nav, nav.scrolled, #mobile-menu { background: rgb(5 5 5 / 96%); }
 .project-links a { display: inline-flex; align-items: center; min-height: 44px; }
 .project-links .details-btn { min-height: 44px; }
 
+/* Scroll progress tips the media planes and moves the images behind their edges. */
+@media screen and (prefers-reduced-motion: no-preference) {
+  .scroll-depth-enabled {
+    --scroll-depth: 0;
+    --scroll-tilt: 17deg;
+    --scroll-parallax: 4%;
+  }
+  .scroll-depth-enabled .portrait-image {
+    transform:
+      rotateX(calc(var(--portrait-x, 0deg) + var(--scroll-depth) * var(--scroll-tilt)))
+      rotateY(calc(var(--portrait-y, 0deg) + var(--scroll-depth) * -7deg));
+    transition: none;
+  }
+  .scroll-depth-enabled .portrait-image img,
+  .scroll-depth-enabled .project .gallery[data-gallery] figure:first-child img {
+    transform: translateY(calc(var(--scroll-depth) * var(--scroll-parallax))) scale(1.09);
+  }
+  .scroll-depth-enabled .project .gallery[data-gallery] { perspective: 900px; }
+  .scroll-depth-enabled .project .gallery[data-gallery] figure:first-child {
+    transform:
+      translateY(var(--preview-lift, 0px))
+      rotateX(calc(var(--scroll-depth) * var(--scroll-tilt)))
+      rotateY(calc(var(--scroll-depth) * 13deg));
+    transition: box-shadow .2s var(--ease), border-color .2s var(--ease);
+  }
+  .scroll-depth-enabled .project .gallery[data-gallery] figure:first-child:is(:hover, :focus-visible) {
+    --preview-lift: -3px;
+  }
+  .scroll-depth-enabled .project .gallery[data-gallery] figure:first-child img {
+    transition: scale .25s var(--ease);
+  }
+  .scroll-depth-enabled .project .gallery[data-gallery] figure:first-child:is(:hover, :focus-visible) img {
+    scale: 1.04;
+  }
+}
+
+@media (max-width: 760px) {
+  .scroll-depth-enabled {
+    --scroll-tilt: 12deg;
+    --scroll-parallax: 3%;
+  }
+}
+
 #nova-orb {
   background: var(--action);
   color: var(--bg);
