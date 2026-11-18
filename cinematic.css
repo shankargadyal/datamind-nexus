@@ -88,11 +88,11 @@ nav, nav.scrolled, #mobile-menu { background: rgb(7 9 13 / 96%); }
 .hero .headline span { display: block; width: fit-content; }
 .hero .name-surname {
   font-size: 1.04em;
-  color: #bac7d6;
+  color: #abbacd;
 }
 @supports (background-clip: text) {
   .hero .name-surname {
-    background: linear-gradient(170deg, var(--text-head) 12%, #dce5ed 48%, #97a9bd 96%);
+    background: linear-gradient(170deg, #bfccdb 12%, #aebed0 48%, #8298b0 96%);
     background-clip: text;
     color: transparent;
   }
@@ -100,7 +100,7 @@ nav, nav.scrolled, #mobile-menu { background: rgb(7 9 13 / 96%); }
 @media (forced-colors: active) {
   .hero .name-surname { background: none; color: CanvasText; }
 }
-.hero-tagline { margin-top: 20px; color: var(--text-head); font-size: clamp(1.6rem, 3vw, 2.7rem); font-weight: 620; line-height: 1.15; letter-spacing: -.035em; }
+.hero-tagline { margin-top: 20px; color: var(--text); font-size: clamp(1.6rem, 3vw, 2.7rem); font-weight: 620; line-height: 1.15; letter-spacing: -.035em; }
 .hero-role { margin-top: 14px; color: var(--text-muted); font-size: 1rem; }
 .hero-role span { color: var(--text-head); padding: 0 .15em; }
 .subhead { max-width: 53ch; margin-top: 12px; color: var(--text); }
@@ -397,7 +397,7 @@ html.intro-playing { overflow: hidden; }
 .intro-letter {
   position: relative;
   display: inline-block;
-  color: #e8e8e8;
+  color: var(--text-head);
   text-shadow: .012em .014em #9c9c9c, .022em .027em #686868, .033em .041em #454545, .046em .055em #282828;
   animation: letter-lock .74s var(--letter-delay) cubic-bezier(.12,.77,.2,1) both;
 }
@@ -407,7 +407,7 @@ html.intro-playing { overflow: hidden; }
   inset: 0;
   color: transparent;
   text-shadow: none;
-  background: linear-gradient(173deg, var(--text-head) 10%, #e1e1e1 40%, #8e8e8e 68%, #cecece 95%);
+  background: linear-gradient(173deg, var(--text-head) 10%, #bcc8d5 40%, #818f9e 68%, #abbacd 95%);
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -433,7 +433,7 @@ html.intro-playing { overflow: hidden; }
   transform-origin: left center;
   justify-self: start;
   margin-left: max(5vw, calc((100vw - 1360px) / 2));
-  color: #f5f5f5;
+  color: var(--text-head);
   animation: identity-flight 3.53s 1.98s both;
 }
 .intro-role { display: grid; justify-items: start; gap: .32em; margin-bottom: .45em; font-size: clamp(1.3rem, 3.3vw, 4rem); }
