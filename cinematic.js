@@ -1,23 +1,19 @@
 (() => {
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const intro = document.querySelector('#cinematic-intro');
-  const seenKey = 'datamind-cinematic-v1';
 
   function playIntro() {
-    if (motion.matches || document.hidden || (location.hash && location.hash !== '#home')) return;
+    if (motion.matches || (location.hash && location.hash !== '#home')) return;
     if (!intro?.showModal || !CSS.supports('clip-path', 'inset(0)')) return;
 
-    let storage;
-    for (const key of ['localStorage', 'sessionStorage']) {
-      try {
-        const candidate = window[key];
-        if (candidate.getItem(seenKey)) return;
-        candidate.setItem(seenKey, '1');
-        storage = candidate;
-        break;
-      } catch {
-        // Fall back to session storage when persistent storage is unavailable.
-      }
+    if (document.hidden) {
+      const startWhenVisible = () => {
+        if (document.hidden) return;
+        document.removeEventListener('visibilitychange', startWhenVisible);
+        playIntro();
+      };
+      document.addEventListener('visibilitychange', startWhenVisible);
+      return;
     }
 
     const title = intro.querySelector('.intro-name');
@@ -62,7 +58,6 @@
       close();
       listeners.abort();
       document.documentElement.classList.remove('intro-playing');
-      try { storage?.removeItem(seenKey); } catch { /* Storage can become unavailable mid-session. */ }
     }
   }
 
