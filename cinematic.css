@@ -1,6 +1,13 @@
 /* Typography and layout shared by the portfolio and its opening sequence. */
+@font-face {
+  font-family: Geist;
+  src: url('vendor/geist/geist-latin.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+}
 :root {
-  --display: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
+  --display: Geist, Inter, system-ui, sans-serif;
   --gutter: clamp(20px, 5vw, 80px);
   --action: var(--accent);
   --nav-inset: 40px;
@@ -14,6 +21,9 @@ body {
 }
 
 section { position: relative; z-index: 1; }
+:is(h1, h2, h3, h4, h5, h6), .hero-tagline, .tl-title, .ach-title, .cert-name, .gh-repo .r-name {
+  font-family: var(--display);
+}
 ::selection { background: var(--accent); color: var(--bg); }
 :is(a, button, [tabindex]):focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 [data-hidden="true"] { display: none !important; }
@@ -68,20 +78,16 @@ nav, nav.scrolled, #mobile-menu { background: rgb(7 9 13 / 96%); }
 }
 .hero-role, .portrait-frame figcaption { font-family: 'JetBrains Mono', monospace; }
 .hero .headline {
-  font-family: var(--display);
-  font-size: clamp(3.8rem, 7.7vw, 8.7rem);
+  font-size: clamp(3.6rem, 7.5vw, 8rem);
   color: var(--text-head);
-  font-weight: 800;
-  line-height: .82;
-  letter-spacing: -.012em;
-  text-transform: uppercase;
+  font-weight: 680;
+  line-height: .93;
+  letter-spacing: -.065em;
   overflow-wrap: normal;
 }
 .hero .headline span { display: block; width: fit-content; }
 .hero .name-surname {
-  margin-inline-start: .14em;
-  font-size: 1.13em;
-  letter-spacing: .025em;
+  font-size: 1.04em;
   color: #bac7d6;
 }
 @supports (background-clip: text) {
@@ -94,7 +100,7 @@ nav, nav.scrolled, #mobile-menu { background: rgb(7 9 13 / 96%); }
 @media (forced-colors: active) {
   .hero .name-surname { background: none; color: CanvasText; }
 }
-.hero-tagline { margin-top: 20px; color: var(--text-head); font-size: clamp(1.6rem, 3vw, 2.7rem); font-weight: 700; line-height: 1.15; }
+.hero-tagline { margin-top: 20px; color: var(--text-head); font-size: clamp(1.6rem, 3vw, 2.7rem); font-weight: 620; line-height: 1.15; letter-spacing: -.035em; }
 .hero-role { margin-top: 14px; color: var(--text-muted); font-size: 1rem; }
 .hero-role span { color: var(--text-head); padding: 0 .15em; }
 .subhead { max-width: 53ch; margin-top: 12px; color: var(--text); }
@@ -151,11 +157,8 @@ nav, nav.scrolled, #mobile-menu { background: rgb(7 9 13 / 96%); }
 }
 .section-heading, .project-title {
   color: var(--text-head);
-  font-family: var(--display);
-  font-weight: 700;
-  letter-spacing: 0;
 }
-#projects .section-heading { font-size: clamp(3rem, 6vw, 6rem); line-height: .95; }
+#projects .section-heading { font-size: clamp(2.4rem, 5.4vw, 5rem); line-height: 1.03; }
 .project {
   padding: clamp(18px, 2.6vw, 40px);
   background: var(--surface);
@@ -168,7 +171,7 @@ nav, nav.scrolled, #mobile-menu { background: rgb(7 9 13 / 96%); }
 .project-motif canvas { display: block; width: 100%; height: 100%; }
 .project-status:not(.personal) { color: var(--live); border-color: rgb(61 220 151 / 28%); background: rgb(61 220 151 / 8%); }
 .project-status.personal { color: var(--text); }
-.project-title { font-size: clamp(2.3rem, 4vw, 4.2rem); line-height: 1; }
+.project-title { font-size: clamp(1.9rem, 3.4vw, 3.5rem); font-weight: 650; line-height: 1.08; letter-spacing: -.045em; }
 .project-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
@@ -356,7 +359,7 @@ html.intro-playing { overflow: hidden; }
   transform-style: preserve-3d;
   transform-origin: top left;
   animation: monogram-flight 1.34s cubic-bezier(.2,.72,.16,1) both;
-  font: 800 72px/.98 var(--display);
+  font: 760 60px/.98 var(--display);
   letter-spacing: .04em;
 }
 .intro-monogram span {
@@ -376,7 +379,7 @@ html.intro-playing { overflow: hidden; }
 .intro-monogram span:last-child { color: var(--text-head); }
 .intro-name, .intro-brand, .intro-role {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 740;
   line-height: .88;
   text-align: center;
   white-space: nowrap;
@@ -384,7 +387,8 @@ html.intro-playing { overflow: hidden; }
 .intro-name {
   display: flex;
   gap: .19em;
-  font-size: clamp(2rem, 10vw, 11rem);
+  font-size: clamp(1.8rem, 9.3vw, 10rem);
+  letter-spacing: -.052em;
   padding: .08em .1em .18em;
   transform-style: preserve-3d;
   animation: name-flight 2.55s .48s both;
@@ -435,7 +439,8 @@ html.intro-playing { overflow: hidden; }
 .intro-role { display: grid; justify-items: start; gap: .32em; margin-bottom: .45em; font-size: clamp(1.3rem, 3.3vw, 4rem); }
 .intro-role span:last-child { font-size: .48em; letter-spacing: .12em; color: var(--text-head); }
 .intro-brand {
-  font-size: clamp(2.85rem, 9.5vw, 10rem);
+  font-size: clamp(1.8rem, 7.8vw, 8rem);
+  letter-spacing: -.055em;
   text-shadow: .025em .035em #757575, .05em .072em #383838;
 }
 .intro-skip {
@@ -493,7 +498,7 @@ html.intro-playing { overflow: hidden; }
 @media (max-width: 760px) {
   .hero { min-height: auto; padding-top: calc(var(--nav-h) + 34px); }
   .hero-grid { grid-template-columns: minmax(0, 1fr); }
-  .hero .headline { font-size: clamp(3.4rem, 13vw, 6.25rem); }
+  .hero .headline { font-size: clamp(3.1rem, 12vw, 6rem); }
   .hero-portrait { width: min(100%, 480px); }
   .hero-actions { display: grid; grid-template-columns: repeat(2, minmax(0, max-content)); }
   .hero-actions .btn { justify-content: center; }
@@ -530,7 +535,7 @@ html.intro-playing { overflow: hidden; }
   #nova-orb[aria-expanded="true"].is-busy svg { width: 17px; height: 17px; }
 }
 @media (max-width: 380px) {
-  .hero .headline { font-size: clamp(2.95rem, 14vw, 3.4rem); }
+  .hero .headline { font-size: clamp(2.65rem, 12vw, 3.4rem); }
   .avail-badge + .avail-badge { padding-left: 0; border-left: 0; }
   .hero-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero-actions .btn { padding-inline: 8px; font-size: 12px; gap: 5px; text-align: center; }

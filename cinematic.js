@@ -18,7 +18,7 @@
 
     const title = intro.querySelector('.intro-name');
     let delay = .54;
-    for (const word of ['SHANKAR', 'GADYAL']) {
+    for (const word of ['Shankar', 'Gadyal']) {
       const group = document.createElement('span');
       group.className = 'intro-word';
       for (const letter of word) {
