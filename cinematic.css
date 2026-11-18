@@ -77,6 +77,23 @@ nav, nav.scrolled, #mobile-menu { background: rgb(7 9 13 / 96%); }
   text-transform: uppercase;
   overflow-wrap: normal;
 }
+.hero .headline span { display: block; width: fit-content; }
+.hero .name-surname {
+  margin-inline-start: .14em;
+  font-size: 1.13em;
+  letter-spacing: .025em;
+  color: #bac7d6;
+}
+@supports (background-clip: text) {
+  .hero .name-surname {
+    background: linear-gradient(170deg, var(--text-head) 12%, #dce5ed 48%, #97a9bd 96%);
+    background-clip: text;
+    color: transparent;
+  }
+}
+@media (forced-colors: active) {
+  .hero .name-surname { background: none; color: CanvasText; }
+}
 .hero-tagline { margin-top: 20px; color: var(--text-head); font-size: clamp(1.6rem, 3vw, 2.7rem); font-weight: 700; line-height: 1.15; }
 .hero-role { margin-top: 14px; color: var(--text-muted); font-size: 1rem; }
 .hero-role span { color: var(--text-head); padding: 0 .15em; }
