@@ -81,7 +81,60 @@
     motion.addEventListener('change', reset);
   }
 
-  function enableScrollDepth() {
+  function createPipelineBackground() {
+    const canvas = document.querySelector('.pipeline-background');
+    const ctx = canvas?.getContext('2d');
+    if (!ctx) return;
+
+    const spine = [[286, 398], [356, 398], [430, 324], [572, 324], [652, 244], [756, 244], [824, 176], [960, 176]];
+    const branches = [
+      [[248, 232], [334, 232], [430, 324]],
+      [[572, 324], [636, 388], [790, 388], [862, 460], [960, 460]],
+      [[652, 244], [652, 134], [740, 46], [960, 46]],
+      [[756, 244], [810, 298], [960, 298]],
+      [[482, 324], [482, 474], [572, 564], [776, 564], [838, 626], [960, 626]]
+    ];
+    const nodes = [[430, 324], [572, 324], [652, 244], [756, 244], [824, 176]];
+    const scale = canvas.width / 960;
+    const length = spine.slice(1).reduce((total, [x, y], index) =>
+      total + Math.hypot(x - spine[index][0], y - spine[index][1]), 0);
+
+    function trace(points, color, width = 1) {
+      ctx.beginPath();
+      ctx.moveTo(...points[0]);
+      points.slice(1).forEach(point => ctx.lineTo(...point));
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.stroke();
+    }
+
+    function diamond(x, y, size, color) {
+      trace([[x - size, y], [x, y - size], [x + size, y], [x, y + size], [x - size, y]], color);
+    }
+
+    return position => {
+      ctx.setTransform(scale, 0, 0, scale, 0, 0);
+      ctx.clearRect(0, 0, 960, 700);
+      ctx.translate(0, -44 * position);
+      for (let x = 160; x < 1150; x += 55) {
+        trace([[x, 0], [x - 700, 700]], 'rgba(240,240,240,.075)');
+        trace([[x - 700, 0], [x, 700]], 'rgba(240,240,240,.065)');
+      }
+      branches.forEach(path => trace(path, 'rgba(230,230,230,.19)'));
+      trace(spine, 'rgba(235,235,235,.29)', 1.5);
+      nodes.forEach(([x, y]) => {
+        diamond(x, y, 17, 'rgba(235,235,235,.18)');
+        diamond(x, y, 8, 'rgba(235,235,235,.52)');
+      });
+      ctx.setLineDash([46, length]);
+      ctx.lineDashOffset = -(length - 46) * (.12 + .88 * position);
+      trace(spine, 'rgba(255,255,255,.72)', 2);
+      ctx.setLineDash([]);
+      ctx.lineDashOffset = 0;
+    };
+  }
+
+  function enableScrollDepth(drawBackground) {
     const panels = [...document.querySelectorAll('.portrait-frame, .project .gallery[data-gallery]')];
     let frame = 0;
     let listeners;
@@ -100,6 +153,9 @@
           panel.style.setProperty('--scroll-depth', depth[index]);
         }
       });
+      const scrollRange = document.documentElement.scrollHeight - viewportHeight;
+      const progress = scrollRange > 0 ? window.scrollY / scrollRange : 0;
+      drawBackground?.(Math.max(0, Math.min(1, progress)));
     }
 
     function schedule() {
@@ -111,7 +167,10 @@
       window.cancelAnimationFrame(frame);
       frame = 0;
       document.documentElement.classList.toggle('scroll-depth-enabled', !motion.matches);
-      if (motion.matches) return;
+      if (motion.matches) {
+        drawBackground?.(0);
+        return;
+      }
 
       listeners = new AbortController();
       const options = { passive: true, signal: listeners.signal };
@@ -127,5 +186,5 @@
 
   playIntro();
   enablePortraitDepth();
-  enableScrollDepth();
+  enableScrollDepth(createPipelineBackground());
 })();

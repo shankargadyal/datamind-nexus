@@ -6,7 +6,26 @@
 }
 
 body {
+  isolation: isolate;
   background: radial-gradient(ellipse 70rem 35rem at 86% 5%, #161616 0%, transparent 80%), var(--bg);
+}
+
+.pipeline-background {
+  position: fixed;
+  z-index: -1;
+  top: clamp(54px, 10vh, 100px);
+  right: 0;
+  width: min(69vw, 960px);
+  height: auto;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse at 68% 47%, #000 35%, transparent 76%);
+  mask-image: radial-gradient(ellipse at 68% 47%, #000 35%, transparent 76%);
+}
+@media (max-width: 760px) {
+  .pipeline-background { width: min(120vw, 640px); max-width: none; opacity: .54; }
+}
+@media print {
+  .pipeline-background { display: none; }
 }
 
 nav, nav.scrolled, #mobile-menu { background: rgb(5 5 5 / 96%); }
