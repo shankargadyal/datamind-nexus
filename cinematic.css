@@ -6,8 +6,15 @@
   font-weight: 400 900;
   font-display: swap;
 }
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('vendor/instrument-sans/instrument-sans-latin.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
 :root {
-  --display: Geist, Inter, system-ui, sans-serif;
+  --display: 'Instrument Sans', Geist, Inter, system-ui, sans-serif;
   --gutter: clamp(20px, 5vw, 80px);
   --action: var(--accent);
   --nav-inset: 40px;
@@ -53,15 +60,32 @@ nav, nav.scrolled, #mobile-menu { background: rgb(7 9 13 / 96%); }
   font: 800 15px/1 var(--display);
   letter-spacing: .04em;
 }
-.btn-primary, .nav-cta, #nova-send, .nova-turn.user .nova-msg, .skip-link {
-  background: var(--action);
-  border-color: var(--action);
-  color: var(--bg);
+.btn, .nav-cta, .nav-resume, #nova-send, .details-btn {
+  font-family: Geist, Inter, system-ui, sans-serif;
+  font-weight: 550;
+  letter-spacing: -.015em;
+  border-radius: 8px;
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.btn-primary, .nav-cta, #nova-send, .skip-link {
+  background: linear-gradient(160deg, #293541, #17202b 70%);
+  border: 1px solid rgb(190 209 227 / 25%);
+  color: #dde7f0;
+  box-shadow: inset 0 1px rgb(242 244 248 / 10%), 0 4px 12px rgb(7 9 13 / 22%);
 }
 .btn-primary:hover, .nav-cta:hover, #nova-send:hover {
-  background: var(--accent-hover);
-  color: var(--bg);
+  background: linear-gradient(160deg, #344554, #1b2835 70%);
+  color: #e7eff6;
+  border-color: rgb(125 220 247 / 48%);
+  box-shadow: inset 0 1px rgb(242 244 248 / 12%), 0 0 20px rgb(76 201 240 / 9%);
 }
+.btn-primary:active, .nav-cta:active, #nova-send:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 1px 5px rgb(7 9 13 / 40%);
+}
+.btn-ghost, .nav-resume, .details-btn { background: rgb(13 17 23 / 78%); border-color: rgb(195 201 212 / 13%); color: #b9c5d3; box-shadow: inset 0 1px rgb(242 244 248 / 3%); }
+.btn-ghost:hover, .nav-resume:hover, .details-btn:hover { background: var(--surface-2); border-color: rgb(195 201 212 / 30%); color: var(--text-head); }
+.nova-turn.user .nova-msg { background: #182b37; color: #d3e2ed; border: 1px solid rgb(76 201 240 / 18%); }
 
 .hero {
   max-width: 1480px;
@@ -80,9 +104,9 @@ nav, nav.scrolled, #mobile-menu { background: rgb(7 9 13 / 96%); }
 .hero .headline {
   font-size: clamp(3.6rem, 7.5vw, 8rem);
   color: var(--text-head);
-  font-weight: 680;
-  line-height: .93;
-  letter-spacing: -.065em;
+  font-weight: 550;
+  line-height: .98;
+  letter-spacing: -.055em;
   overflow-wrap: normal;
 }
 .hero .headline span { display: block; width: fit-content; }
@@ -100,7 +124,7 @@ nav, nav.scrolled, #mobile-menu { background: rgb(7 9 13 / 96%); }
 @media (forced-colors: active) {
   .hero .name-surname { background: none; color: CanvasText; }
 }
-.hero-tagline { margin-top: 20px; color: var(--text); font-size: clamp(1.6rem, 3vw, 2.7rem); font-weight: 620; line-height: 1.15; letter-spacing: -.035em; }
+.hero-tagline { margin-top: 24px; color: #adbaca; font-size: clamp(1.4rem, 2.6vw, 2.25rem); font-weight: 500; line-height: 1.2; letter-spacing: -.025em; }
 .hero-role { margin-top: 14px; color: var(--text-muted); font-size: 1rem; }
 .hero-role span { color: var(--text-head); padding: 0 .15em; }
 .subhead { max-width: 53ch; margin-top: 12px; color: var(--text); }
@@ -171,7 +195,7 @@ nav, nav.scrolled, #mobile-menu { background: rgb(7 9 13 / 96%); }
 .project-motif canvas { display: block; width: 100%; height: 100%; }
 .project-status:not(.personal) { color: var(--live); border-color: rgb(61 220 151 / 28%); background: rgb(61 220 151 / 8%); }
 .project-status.personal { color: var(--text); }
-.project-title { font-size: clamp(1.9rem, 3.4vw, 3.5rem); font-weight: 650; line-height: 1.08; letter-spacing: -.045em; }
+.project-title { font-size: clamp(1.9rem, 3.4vw, 3.5rem); font-weight: 550; line-height: 1.1; letter-spacing: -.04em; }
 .project-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
